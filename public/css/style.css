@@ -1,0 +1,16 @@
+body {
+    background: #f8f9fa;
+}
+
+.card img {
+    object-fit: cover;
+    height: 220px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}

@@ -1,0 +1,36 @@
+# Ignore Composer's vendor directory (contains third-party packages)
+/vendor/
+
+# Ignore Node.js dependencies (if you're using any frontend tools)
+# Safe even if not used
+/node_modules/
+
+# Ignore environment config file (contains sensitive credentials)
+.env
+
+*.env
+
+# Ignore all log files (e.g., error.log, debug.log)
+*.log
+
+# Ignore lock files (Composer, npm, etc.)
+*.lock
+
+# Ignore macOS metadata file (automatically generated)
+.DS_Store
+
+# Ignore JetBrains IDE settings (e.g., PhpStorm)
+.idea/
+
+# Ignore SQL dump files in project root
+/*.sql
+
+
+# Ignore vendor again (redundant – already above, but no harm)
+/vendor/
+
+# Ignore compiled Smarty template files
+/storage/templates_c/*
+
+# Ignore cached Smarty templates
+/storage/cache/*

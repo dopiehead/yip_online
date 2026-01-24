@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{$title|default:"My E-Commerce"}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<body>
+    {include file="../partials/navbar.tpl"}
+
+    <div class="container py-4">
+        {if isset($error)}
+            <div class="alert alert-danger">{$error}</div>
+        {/if}
+        {if isset($success)}
+            <div class="alert alert-success">{$success}</div>
+        {/if}
+
+        {block name="content"}{/block}
+    </div>
+
+    {include file="../partials/footer.tpl"}
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
