@@ -23,7 +23,7 @@ class ProductController extends Controller {
     // Show single product
     public function show() {
 
-        $userId = isset($_SESSION['id']) && !empty($_SESSION['id']) ? filter_var($_SESSION['id'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
+        $userId = $_SESSION['user']['id'] ?? null;
 
         if (!isset($_GET['id'])) {
             $_SESSION['error'] = 'Product not found';
@@ -31,7 +31,7 @@ class ProductController extends Controller {
             exit;
         }
 
-        $product = Product::find($_GET['id']);
+        $product = Product::findById($_GET['id']);
 
         if (!$product) {
             $_SESSION['error'] = 'Product not found';
@@ -41,7 +41,8 @@ class ProductController extends Controller {
 
         $this->render('products/show.tpl', [
             'product' => $product,
-            'userId' =>$userId
+            'userId' =>$userId,
+            'csrf_token' => $_SESSION['csrf']
         ]);
     }
 

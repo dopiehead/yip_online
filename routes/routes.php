@@ -35,7 +35,9 @@ return [
         '/cart/add' => ['CartController', 'add'],
         '/cart/remove' => ['CartController', 'remove'],
         '/cart/get' => ['CartController', 'get'],
+        '/verify-transaction' => ['VerifyTransactionController', 'index'],
     ],
+
 
     'payment' => [
         '/pay' => ['PaymentController', 'pay'],

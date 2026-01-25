@@ -11,7 +11,7 @@ class Product
     // Fetch all products
     public static function all(): array
     {
-        $stmt = Database::connect()->query("SELECT * FROM " . self::$table. "AND sold = 0 ");
+        $stmt = Database::connect()->query("SELECT * FROM " . self::$table. " WHERE sold = 0 ");
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
@@ -74,6 +74,32 @@ class Product
 
         return $stmt->execute($values);
     }
+
+    public static function removeFromQuantity(int $id, int $total): bool
+    {
+        $sql = "UPDATE " . self::$table . "
+                SET quantity = quantity - ?
+                WHERE id = ? AND quantity >= ?";
+    
+        $stmt = Database::connect()->prepare($sql);
+    
+        return $stmt->execute([$total, $id, $total]);
+    }
+    
+
+    
+    public static function restoreQuantity(int $id, int $total): bool
+    {
+        $sql = "UPDATE " . self::$table . "
+                SET quantity = quantity + ?
+                WHERE id = ?";
+    
+        $stmt = Database::connect()->prepare($sql);
+    
+        return $stmt->execute([$total, $id]);
+    }
+
+
 
     // Create a product with image upload via Cloudinary
     public static function createWithImage(array $data, array $file)

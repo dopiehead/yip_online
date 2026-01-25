@@ -1,72 +1,53 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\User;
 use App\Models\Order;
-use App\Models\Product;
-use App\Services\MailService;
 
-class CheckoutController extends Controller {
+class CheckoutController extends Controller
+{
+    public function index()
+    {
+       
 
-    public function index() {
-        // User must be logged in (or handled by route group)
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
+
         if (!isset($_SESSION['user'])) {
             header('Location: /login');
             exit;
         }
 
-        $this->view->assign('cart', $_SESSION['cart'] ?? []);
-        $this->view->display('cart/checkout.tpl');
-    }
+        $buyer = $_SESSION['user']['id'];
+        $cartItems = Order::cart($buyer);
 
-    public function process() {
-        // CSRF check
-        if (!isset($_POST['csrf']) || $_POST['csrf'] !== $_SESSION['csrf']) {
-            die("Invalid CSRF token");
-        }
-
-        // Cart empty?
-        if (empty($_SESSION['cart'])) {
-            header('Location: /cart');
+        if (empty($cartItems)) {
+            header("Location: /cart");
             exit;
         }
 
-        $userId = $_SESSION['user']['id'];
-        $total = 0;
-
-        // Calculate total
-        foreach ($_SESSION['cart'] as $id => $qty) {
-            $product = Product::find($id);
-            $total += $product['price'] * $qty;
+        $subtotal = 0;
+        foreach ($cartItems as $item) {
+            $subtotal += $item['price'] * $item['total'];
         }
 
-        // Create order
-        $orderId = Order::create($userId, $total);
+        $txn_ref = uniqid('TXN_');
 
-        // Add items and reduce stock
-        foreach ($_SESSION['cart'] as $id => $qty) {
-            $product = Product::find($id);
-            Order::addItem($orderId, $id, $qty, $product['price']);
-            Product::reduceStock($id, $qty);
-        }
+        $_SESSION['txn_ref'] = $txn_ref;
 
-        // Send confirmation email
-        MailService::send(
-            $_SESSION['user']['email'],
-            'Order Confirmation',
-            "Your order #{$orderId} was placed successfully."
-        );
+        $this->view->assign([
+            'csrf_token'  => $_SESSION['csrf'],
+            'buyer'       => $buyer,
+            'email'       => $_SESSION['user']['user_email'],
+            'cart_items'  => $cartItems,
+            'subtotal'    => $subtotal, // ⚠️ DO NOT FORMAT
+            'txn_ref'     => $txn_ref,
+            'paystackKey' => $_ENV['paystack_key']
+        ]);
 
-        // Clear cart
-        unset($_SESSION['cart']);
-
-        // Redirect to success page
-        header('Location: /order/success');
-        exit;
-    }
-
-    public function invoice($orderId) {
-        header("Content-Type: application/pdf");
-        echo "Invoice for order #$orderId";
+        $this->view->display('cart/checkout.tpl');
     }
 }

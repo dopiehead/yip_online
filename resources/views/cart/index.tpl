@@ -3,7 +3,7 @@
 {block name="content"}
 <h2 class="mb-4">Shopping Cart</h2>
 
-{if empty($cart)}
+{if empty($product)}
     <div class="alert alert-info">Your cart is empty</div>
 {else}
 <table class="table table-bordered align-middle">
@@ -17,25 +17,29 @@
         </tr>
     </thead>
     <tbody>
-        {foreach $cart as $item}
+        {assign var="grandTotal" value=0}
+        {foreach $product as $item}
+            {assign var="itemTotal" value=$item.total * $item.price}
+            {assign var="grandTotal" value=$grandTotal + $itemTotal}
         <tr>
-            <td>{$item.name}</td>
-            <td>{$item.qty}</td>
+            <td>{$item.product_name}</td>
+            <td>{$item.total}</td>
             <td>$ {$item.price}</td>
-            <td>$ {$item.qty * $item.price}</td>
+            <td>$ {$itemTotal}</td>
             <td>
                 <button class="btn btn-sm btn-danger remove-item" data-id="{$item.id}">
                     ✕
                 </button>
+                <input id='crsf' name='csrf' type='hidden' value='{$csrf_token|escape}'>
             </td>
         </tr>
         {/foreach}
     </tbody>
 </table>
 
-<div class="d-flex justify-content-between">
-    <h4>Total: $ {$total}</h4>
-    <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+<div class="d-flex justify-content-between mt-3">
+    <h4>Total: $ {$grandTotal}</h4>
+    <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
 </div>
 {/if}
 {/block}

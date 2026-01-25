@@ -10,9 +10,7 @@
         <li class="nav-item"><a class="nav-link" href="/index">Products</a></li>
         {if isset($smarty.session.user)}
             <li class="nav-item"><a class="nav-link" href="cart">Cart</a></li>
-            {if $smarty.session.user.role == 'admin'}
-                <li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
-            {/if}
+            <li class="nav-item"><a class="nav-link" href="admin/index"> Admin</a></li>
             <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
         {else}
             <li class="nav-item"><a class="nav-link" href="login">Login</a></li>

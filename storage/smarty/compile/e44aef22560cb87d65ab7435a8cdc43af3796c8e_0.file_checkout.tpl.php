@@ -1,15 +1,59 @@
-{extends file="layouts/main.tpl"}
+<?php
+/* Smarty version 5.7.0, created on 2026-01-25 22:31:48
+  from 'file:cart/checkout.tpl' */
 
-{block name="content"}
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.7.0',
+  'unifunc' => 'content_697699d4492f38_68926095',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'e44aef22560cb87d65ab7435a8cdc43af3796c8e' => 
+    array (
+      0 => 'cart/checkout.tpl',
+      1 => 1769380232,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_697699d4492f38_68926095 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
+$_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
+?>
+
+
+<?php 
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1075369829697699d44796c7_44182436', "content");
+?>
+
+<?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
+}
+/* {block "content"} */
+class Block_1075369829697699d44796c7_44182436 extends \Smarty\Runtime\Block
+{
+public function callBlock(\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
+?>
+
 <h2 class="mb-4">Checkout</h2>
 
 <form id="paymentForm">
-    <input type="hidden" name="csrf" value="{$csrf_token}">
-    <input type="hidden" id="buyer_id" value="{$buyer}">
-    <input type="hidden" id="amount" value="{$subtotal}">
-    <input type="hidden" id="email" value="{$email}">
-    <input type="hidden" id="key" value="{$paystackKey}">
-    <input type="hidden" id="txn_ref" value="{$txn_ref}">
+    <input type="hidden" name="csrf" value="<?php echo $_smarty_tpl->getValue('csrf_token');?>
+">
+    <input type="hidden" id="buyer_id" value="<?php echo $_smarty_tpl->getValue('buyer');?>
+">
+    <input type="hidden" id="amount" value="<?php echo $_smarty_tpl->getValue('subtotal');?>
+">
+    <input type="hidden" id="email" value="<?php echo $_smarty_tpl->getValue('email');?>
+">
+    <input type="hidden" id="key" value="<?php echo $_smarty_tpl->getValue('paystackKey');?>
+">
+    <input type="hidden" id="txn_ref" value="<?php echo $_smarty_tpl->getValue('txn_ref');?>
+">
 
     <div class="mb-3">
         <label>Delivery Address</label>
@@ -22,14 +66,18 @@
     </div>
 
     <button type="submit" class="btn btn-success w-100">
-        Pay ₦{$subtotal|number_format:2}
+        Pay ₦<?php echo $_smarty_tpl->getSmarty()->getModifierCallback('number_format')($_smarty_tpl->getValue('subtotal'),2);?>
+
     </button>
 </form>
 
 <!-- Paystack SDK -->
-<script src="https://js.paystack.co/v1/inline.js"></script>
+<?php echo '<script'; ?>
+ src="https://js.paystack.co/v1/inline.js"><?php echo '</script'; ?>
+>
 
-<script>
+<?php echo '<script'; ?>
+>
 $(function () {
 
     $('#paymentForm').on('submit', function (e) {
@@ -94,6 +142,11 @@ $(function () {
     });
 
 });
-</script>
+<?php echo '</script'; ?>
+>
 
-{/block}
+<?php
+}
+}
+/* {/block "content"} */
+}

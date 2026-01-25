@@ -8,13 +8,14 @@ $(document).ready(function () {
         $(".submit-note").hide();
 
         const itemId = $(this).data('id');
-        const seller_id = $('#seller_id').val();
+        const buyer_id = $('#buyer_id').val();
         const noofitem = $('#noofitem').val();
+        const csrf = $('#csrf').val();
 
         const missing = [];
 
         if (!itemId) missing.push('Product ID');
-        if (!seller_id) missing.push('Seller ID');
+        if (!buyer_id) missing.push('Buyer ID');
         if (!noofitem || parseInt(noofitem) <= 0) missing.push('Quantity');
 
         if (missing.length > 0) {
@@ -29,14 +30,15 @@ $(document).ready(function () {
         }
 
         const payload = {
-            itemId: itemId,
-            seller_id: seller_id,
-            noofitem: noofitem
+            product_id: itemId,
+            buyer_id: buyer_id,
+            noofitem: noofitem,
+            csrf: csrf
         };
 
         $.ajax({
             type: "POST",
-            url: "cart",
+            url: "cart/add",
             data: JSON.stringify(payload),
             contentType: "application/json",
             dataType: "json",
@@ -46,6 +48,7 @@ $(document).ready(function () {
             success: function (response) {
                 $(".spinner-border").hide();
                 $(".submit-note").show();
+                $("#noofitem").val("");
                 $(".numbering").html("<span class='rounded rounded-circle text-white bg-danger'>" + noofitem +"</span>");
                 if (response.success) {
                     swal({

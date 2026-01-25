@@ -1,10 +1,10 @@
 
 
-<div style='z-index:9999999' class=' position-relative text-center'><span class='sidebar-toggle' id="toggle-bars"><i class='fa fa-bars text-danger'></i></span></div>
+<div style='z-index:9999999' class=' position-relative text-center d-md-none d-block'><span class='sidebar-toggle' id="toggle-bars"><i class='fa fa-bars text-danger'></i></span></div>
 <div class="sidebar sidebar-container ">
 
     <div class="logo d-flex  justify-content-between">
-        <i class="fas fa-th-large"></i>Yiponline
+        <a class='text-white text-decoration-none' href='../index'>Yiponline</a>
     </div>
 
     <nav class="nav flex-column">
