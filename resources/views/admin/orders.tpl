@@ -18,7 +18,7 @@
         {foreach $orders as $order}
         <tr>
             <td>{$order.id}</td>
-            <td>{$order.email}</td>
+            <td>{$order.user_email}</td>
             <td>$ {$order.total}</td>
             <td>
                 <span class="badge bg-info">{$order.status}</span>

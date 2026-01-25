@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-class PaymentController {
+class PaymentController extends Controller {
 
     public function pay() {
         // simulate successful payment

@@ -7,16 +7,17 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
   {* <link rel="stylesheet" href="../../assets/css/protected/post-contents.css"/> *}
-  <link rel="stylesheet" href="../../assets/css/protected/sidebar.css"/>
-  <link rel="stylesheet" href="../../assets/css/protected/topbar.css"/>
+  <link rel="stylesheet" href="../css/sidebar.css"/>
+  <link rel="stylesheet" href="../css/topbar.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 
-  {include file="../components/sidebar.tpl"}
+  {include file="admin/components/sidebar.tpl"}
 
   <div class="main-content">
-    {include file="../components/topbar.tpl"}
+
+    {include file="admin/components/sidebar.tpl"}
 
     <div class="container-fluid">
     <div class="form-container d-flex justify-content-between align-items-center gap-2 flex-md-row flex-column">

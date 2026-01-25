@@ -17,9 +17,13 @@ return [
     ],
 
     'admin' => [
-        '/admin' => ['AdminController', 'dashboard'],
-        '/admin/orders' => ['AdminController', 'orders'],
-        '/admin/order/update' => ['AdminController', 'updateStatus'],
+        '/admin/index' => ['AdminController', 'dashboard'],
+        '/admin/order-history' => ['AdminController', 'orders'],
+        '/admin/contents' => ['AdminController', 'myproducts'],
+        '/admin/post-contents' => ['AdminController', 'postContents'],
+        '/admin/components/topbar' => ['AdminController', 'topbar'],
+        '/admin/edit' => ['AdminController', 'editProduct'],
+        '/admin/logout' => ['AdminController', 'logout'],
     ],
 
     'cart' => [

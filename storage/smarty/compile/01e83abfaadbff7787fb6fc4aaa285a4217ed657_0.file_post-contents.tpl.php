@@ -1,22 +1,51 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.7.0, created on 2026-01-25 02:43:36
+  from 'file:admin/post-contents.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.7.0',
+  'unifunc' => 'content_697583586483b0_31750844',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '01e83abfaadbff7787fb6fc4aaa285a4217ed657' => 
+    array (
+      0 => 'admin/post-contents.tpl',
+      1 => 1769309013,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:admin/components/sidebar.tpl' => 2,
+  ),
+))) {
+function content_697583586483b0_31750844 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
+?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{$title}</title>
+  <title><?php echo $_smarty_tpl->getValue('title');?>
+</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-  {* <link rel="stylesheet" href="../../assets/css/protected/post-contents.css"/> *}
-  <link rel="stylesheet" href="../css/sidebar.css"/>
+    <link rel="stylesheet" href="../css/sidebar.css"/>
   <link rel="stylesheet" href="../css/topbar.css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"><?php echo '</script'; ?>
+>
 </head>
 <body>
 
-  {include file="admin/components/sidebar.tpl"}
+  <?php $_smarty_tpl->renderSubTemplate("file:admin/components/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 
   <div class="main-content">
-    {include file="admin/components/sidebar.tpl"}
+    <?php $_smarty_tpl->renderSubTemplate("file:admin/components/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 
     <div class="container-fluid">
       <div class="form-container">
@@ -107,8 +136,9 @@
   </div>
 
 </div>
-  {literal}
-    <script>
+  
+    <?php echo '<script'; ?>
+>
       $('#productForm').on('submit', function (e) {
         e.preventDefault();
         $("#messages").html('');
@@ -148,12 +178,17 @@
           }
         });
       });
-    </script>
-    {/literal}
+    <?php echo '</script'; ?>
+>
+    
     
 
 
-  <script src='../../assets/js/post-contents.js'></script>
+  <?php echo '<script'; ?>
+ src='../../assets/js/post-contents.js'><?php echo '</script'; ?>
+>
   
 </body>
 </html>
+<?php }
+}

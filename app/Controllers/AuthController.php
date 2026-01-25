@@ -129,12 +129,20 @@ class AuthController extends Controller {
                 }
     
                 // Login successful
-                $_SESSION['user'] = $user;
-    
-                echo json_encode([
+                $_SESSION['user'] = [
+                    'id'         => $user['id'],
+                    'user_name'  => $user['user_name'],
+                    'user_email' => $user['user_email'],
+                    'user_type'  => $user['user_type'],
+                    'created_at' => $user['created_at'],
+                    'user_image' => $user['user_image'] ?? null
+                ];
+
+
+                echo json_encode([  
                     'status' => 'success',
                     'message' => 'Login successful',
-                    'redirect' => 'dashboard' // or wherever you want to redirect
+                    'redirect' => 'admin/index' // or wherever you want to redirect
                 ]);
                 exit;
     
