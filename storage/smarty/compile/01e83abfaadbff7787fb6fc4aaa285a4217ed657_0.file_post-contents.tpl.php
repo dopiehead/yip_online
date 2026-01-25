@@ -1,55 +1,50 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 02:43:36
+/* Smarty version 5.7.0, created on 2026-01-25 06:09:09
   from 'file:admin/post-contents.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_697583586483b0_31750844',
+  'unifunc' => 'content_6975b3854e6e84_06887813',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '01e83abfaadbff7787fb6fc4aaa285a4217ed657' => 
     array (
       0 => 'admin/post-contents.tpl',
-      1 => 1769309013,
+      1 => 1769321286,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:admin/components/sidebar.tpl' => 2,
   ),
 ))) {
-function content_697583586483b0_31750844 (\Smarty\Template $_smarty_tpl) {
+function content_6975b3854e6e84_06887813 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><?php echo $_smarty_tpl->getValue('title');?>
-</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../css/sidebar.css"/>
-  <link rel="stylesheet" href="../css/topbar.css"/>
-  <?php echo '<script'; ?>
- src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"><?php echo '</script'; ?>
->
-</head>
-<body>
-
-  <?php $_smarty_tpl->renderSubTemplate("file:admin/components/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+$_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
-  <div class="main-content">
-    <?php $_smarty_tpl->renderSubTemplate("file:admin/components/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+
+<?php 
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_339895836975b3854e2c25_78756690', "content");
 ?>
 
-    <div class="container-fluid">
+  
+
+<?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
+}
+/* {block "content"} */
+class Block_339895836975b3854e2c25_78756690 extends \Smarty\Runtime\Block
+{
+public function callBlock(\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
+?>
+
+
+    <div class="container-fluid mt-3">
       <div class="form-container">
-        <form id="productForm"  method="POST" enctype="multipart/form-data">
+        <form id="productForm" action="create-product"  method="POST" enctype="multipart/form-data">
           
         <div class="row">
             <!-- Product Info -->
@@ -63,11 +58,6 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
                 </div>
 
                 <div class="mb-3">
-                  <label class="form-label">Product Details</label>
-                  <textarea name="product_details" class="form-control" rows="4" required></textarea>
-                </div>
-
-                <div class="mb-3">
                   <label class="form-label">Price (₦)</label>
                   <input type="number" name="product_price" class="form-control" required>
                 </div>
@@ -77,20 +67,6 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
                   <input type="number" name="product_quantity" class="form-control" required>
                 </div>
 
-                <div class="mb-3">
-                  <label class="form-label">Discount (%)</label>
-                  <input type="number" name="product_discount" class="form-control">
-                </div>
-
-                <div class="mb-3">
-                  <label class="form-label">Category</label>
-                  <select name="product_category" class="form-select" required>
-                    <option value="">Select category</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="accessories">Accessories</option>
-                  </select>
-                </div>
               </div>
             </div>
 
@@ -108,7 +84,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
                 </div>
             
                 <label for="fileElem" class="btn btn-outline-primary w-100 mb-2">
-                    <i class="fas fa-upload me-2"></i>Click to Upload Image
+                    <i class="fas fa-upload me-2"></i>Click or Drag and Drop to Upload Image
                 </label>
             
                 <input type="file" name="product_images[]" id="fileElem" accept=".jpg, .jpeg, .png" class="d-none" multiple>
@@ -133,62 +109,13 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
         </form>
       </div>
     </div>
-  </div>
-
-</div>
   
-    <?php echo '<script'; ?>
->
-      $('#productForm').on('submit', function (e) {
-        e.preventDefault();
-        $("#messages").html('');
-        $(".submit-note").hide();
-        $(".spinner-border").show();
-    
-        const formData = new FormData(this); // This already includes all form fields and files
-    
-        $.ajax({
-          url: 'postcontents',
-          method: 'POST',
-          data: formData,
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            try {
-              const res = typeof response === "string" ? JSON.parse(response) : response;
-    
-              if (res.success) {
-                $("#messages").html("<span class='alert-success'>" + res.message + "</span>");
-                $(".submit-note").show();
-                $('#productForm')[0].reset();
-                $('#preview').html('');
-              } else {
-                $("#messages").html('<span class="alert-danger"> ' + res.message + '</span>');
-              }
-            } catch (err) {
-              console.error("JSON parse error:", response);
-              $("#messages").html("<span class='alert-danger'> Something went wrong (invalid response)</span>");
-            } finally {
-              $(".spinner-border").hide();
-            }
-          },
-          error: function (xhr) {
-            $("#messages").html("<span class='alert-danger'> Server error: " + xhr.statusText + "</span>");
-            $(".spinner-border").hide();
-          }
-        });
-      });
-    <?php echo '</script'; ?>
->
-    
-    
-
-
   <?php echo '<script'; ?>
- src='../../assets/js/post-contents.js'><?php echo '</script'; ?>
+ src='../js/post-content.js'><?php echo '</script'; ?>
 >
-  
-</body>
-</html>
-<?php }
+
+<?php
+}
+}
+/* {/block "content"} */
 }

@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{$title}</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-  {* <link rel="stylesheet" href="../../assets/css/protected/post-contents.css"/> *}
-  <link rel="stylesheet" href="../css/sidebar.css"/>
-  <link rel="stylesheet" href="../css/topbar.css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
-<body>
+{extends file="layouts/admin.tpl"}
 
-  {include file="admin/components/sidebar.tpl"}
+{block name="content"}
 
-  <div class="main-content">
-    {include file="admin/components/sidebar.tpl"}
-
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
       <div class="form-container">
-        <form id="productForm"  method="POST" enctype="multipart/form-data">
+        <form id="productForm" action="create-product"  method="POST" enctype="multipart/form-data">
           
         <div class="row">
             <!-- Product Info -->
@@ -34,11 +18,6 @@
                 </div>
 
                 <div class="mb-3">
-                  <label class="form-label">Product Details</label>
-                  <textarea name="product_details" class="form-control" rows="4" required></textarea>
-                </div>
-
-                <div class="mb-3">
                   <label class="form-label">Price (₦)</label>
                   <input type="number" name="product_price" class="form-control" required>
                 </div>
@@ -48,20 +27,6 @@
                   <input type="number" name="product_quantity" class="form-control" required>
                 </div>
 
-                <div class="mb-3">
-                  <label class="form-label">Discount (%)</label>
-                  <input type="number" name="product_discount" class="form-control">
-                </div>
-
-                <div class="mb-3">
-                  <label class="form-label">Category</label>
-                  <select name="product_category" class="form-select" required>
-                    <option value="">Select category</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="accessories">Accessories</option>
-                  </select>
-                </div>
               </div>
             </div>
 
@@ -79,7 +44,7 @@
                 </div>
             
                 <label for="fileElem" class="btn btn-outline-primary w-100 mb-2">
-                    <i class="fas fa-upload me-2"></i>Click to Upload Image
+                    <i class="fas fa-upload me-2"></i>Click or Drag and Drop to Upload Image
                 </label>
             
                 <input type="file" name="product_images[]" id="fileElem" accept=".jpg, .jpeg, .png" class="d-none" multiple>
@@ -104,56 +69,9 @@
         </form>
       </div>
     </div>
-  </div>
-
-</div>
-  {literal}
-    <script>
-      $('#productForm').on('submit', function (e) {
-        e.preventDefault();
-        $("#messages").html('');
-        $(".submit-note").hide();
-        $(".spinner-border").show();
-    
-        const formData = new FormData(this); // This already includes all form fields and files
-    
-        $.ajax({
-          url: 'postcontents',
-          method: 'POST',
-          data: formData,
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            try {
-              const res = typeof response === "string" ? JSON.parse(response) : response;
-    
-              if (res.success) {
-                $("#messages").html("<span class='alert-success'>" + res.message + "</span>");
-                $(".submit-note").show();
-                $('#productForm')[0].reset();
-                $('#preview').html('');
-              } else {
-                $("#messages").html('<span class="alert-danger"> ' + res.message + '</span>');
-              }
-            } catch (err) {
-              console.error("JSON parse error:", response);
-              $("#messages").html("<span class='alert-danger'> Something went wrong (invalid response)</span>");
-            } finally {
-              $(".spinner-border").hide();
-            }
-          },
-          error: function (xhr) {
-            $("#messages").html("<span class='alert-danger'> Server error: " + xhr.statusText + "</span>");
-            $(".spinner-border").hide();
-          }
-        });
-      });
-    </script>
-    {/literal}
-    
-
-
-  <script src='../../assets/js/post-contents.js'></script>
   
-</body>
-</html>
+  <script src='../js/post-content.js'></script>
+
+{/block}
+  
+

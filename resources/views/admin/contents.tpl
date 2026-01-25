@@ -1,39 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{$title}</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-  {* <link rel="stylesheet" href="../../assets/css/protected/post-contents.css"/> *}
-  <link rel="stylesheet" href="../css/sidebar.css"/>
-  <link rel="stylesheet" href="../css/topbar.css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
-<body>
+{extends file="layouts/admin.tpl"}
 
-  {include file="admin/components/sidebar.tpl"}
-
-  <div class="main-content">
-
-    {include file="admin/components/sidebar.tpl"}
-
-    <div class="container-fluid">
-    <div class="form-container d-flex justify-content-between align-items-center gap-2 flex-md-row flex-column">
-    {foreach from=$products item=product}
-      <div class='package border border-1 border-mute position-relative'>
-        <a href='editProduct.php?id={$product.id}' class='text-dark px-2 py-1 text-decoration-none bg-white translate-top right-0 position-absolute'><i class='fa fa-edit'></i></a>
-        <img style='height:200px;width:250px;' class='img-fluid' src='{$product.product_image[0]|default:"https://placehold.co/400"}'>
-        <div class='d-flex flex-column flex-row p-2'>
-          <span class='fw-bold text-capitalize'>{$product.product_name}</span>
-          <span class='text-danger text-capitalize'>{$product.product_price}</span>
-        </div>
+{block name="content"}
+    <div class="container-fluid mt-3">
+      <div class="form-container d-flex flex-wrap justify-content-start gap-3">
+        {* Check if products exist *}
+        {if $products|@count > 0}
+          {foreach from=$products item=product}
+            <div class='package border border-1 border-muted position-relative'>
+              <a href='edit-product?id={$product.id|default:0}' 
+                 class='text-dark px-2 py-1 text-decoration-none bg-white translate-top right-0 position-absolute'>
+                <i class='fa fa-edit'></i>
+              </a>
+              <img style='height:200px;width:250px;' class='img-fluid' 
+                   src='{$product.image|default:"https://placehold.co/400"}' 
+                   alt='{$product.name|default:"Product"}'>
+              <div class='d-flex flex-column p-2'>
+                <span class='fw-bold text-capitalize'>{$product.name|default:"No Name"}</span>
+                <span class='text-danger text-capitalize'>{$product.price|default:"N/A"}</span>
+              </div>
+            </div>
+          {/foreach}
+        {else}
+          <p class="text-muted">No products found.</p>
+        {/if}
       </div>
-    {/foreach}
-  </div>
-     </div>
-  </div>
+    </div>
 
-  </body>
-  </html>
+    {/block}
+

@@ -1,4 +1,4 @@
-
+/* SIDEBAR BASE */
 .sidebar {
     background-color: #2d3748;
     min-height: 100vh;
@@ -8,8 +8,10 @@
     top: 0;
     z-index: 1000;
     padding: 0;
+    transition: transform 0.3s ease;
 }
 
+/* LOGO */
 .sidebar .logo {
     padding: 24px;
     border-bottom: 1px solid #4a5568;
@@ -18,6 +20,7 @@
     font-size: 18px;
 }
 
+/* NAV LINKS */
 .sidebar .nav-link {
     color: #a0aec0;
     padding: 12px 24px;
@@ -29,11 +32,37 @@
     font-weight: 500;
 }
 
-
-
 .sidebar .nav-link i {
     width: 20px;
     margin-right: 12px;
+}
+
+/* HOVER */
+.sidebar .nav-link:hover {
+    background: #1a202c;
+    color: #fff;
+}
+
+/* TOGGLE ICON */
+#toggle-bars:hover,
+#toggle-bars:focus {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/* =========================
+   MOBILE BEHAVIOR
+   ========================= */
+@media (max-width: 991px) {
+    .sidebar {
+        transform: translateX(-100%); 
+        width:100%;/* hide by default */
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+         /* show when toggled */
+    }
 }
 
 

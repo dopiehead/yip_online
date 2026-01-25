@@ -2,37 +2,41 @@
 namespace App\Services;
 
 use Cloudinary\Cloudinary;
-use Cloudinary\Configuration\Configuration;
 
 class CloudinaryService {
 
     private static $cloudinary;
 
-    // Initialize Cloudinary
     public static function init() {
         if (!self::$cloudinary) {
-            Configuration::instance([
-                'cloud' => [
-                    'cloud_name' => $_ENV['CLOUDINARY_CLOUD_NAME'],
-                    'api_key'    => $_ENV['CLOUDINARY_API_KEY'],
-                    'api_secret' => $_ENV['CLOUDINARY_API_SECRET'],
-                ],
-                'url' => [
-                    'secure' => true
-                ]
-            ]);
 
-            self::$cloudinary = new Cloudinary();
+            // Read from env
+            $cloudName = $_ENV['CLOUDINARY_CLOUD_NAME'] ?? null;
+            $apiKey    = $_ENV['CLOUDINARY_API_KEY'] ?? null;
+            $apiSecret = $_ENV['CLOUDINARY_API_SECRET'] ?? null;
+
+            if (!$cloudName || !$apiKey || !$apiSecret) {
+                throw new \Exception("Cloudinary configuration missing. Check your .env file.");
+            }
+
+            // Initialize Cloudinary with array config
+            self::$cloudinary = new Cloudinary([
+                'cloud' => [
+                    'cloud_name' => $cloudName,
+                    'api_key'    => $apiKey,
+                    'api_secret' => $apiSecret
+                ],
+                'url' => ['secure' => true]
+            ]);
         }
 
         return self::$cloudinary;
     }
 
-    // Upload image
     public static function upload($filePath, $folder = "ecommerce") {
-        self::init();
+        $cloud = self::init();
         try {
-            $upload = self::$cloudinary->uploadApi()->upload($filePath, [
+            $upload = $cloud->uploadApi()->upload($filePath, [
                 "folder" => $folder
             ]);
             return $upload['secure_url'];
@@ -41,11 +45,10 @@ class CloudinaryService {
         }
     }
 
-    // Delete image
     public static function delete($publicId) {
-        self::init();
+        $cloud = self::init();
         try {
-            return self::$cloudinary->uploadApi()->destroy($publicId);
+            return $cloud->uploadApi()->destroy($publicId);
         } catch (\Exception $e) {
             throw new \Exception("Cloudinary delete failed: " . $e->getMessage());
         }

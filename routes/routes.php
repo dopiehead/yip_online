@@ -22,7 +22,11 @@ return [
         '/admin/contents' => ['AdminController', 'myproducts'],
         '/admin/post-contents' => ['AdminController', 'postContents'],
         '/admin/components/topbar' => ['AdminController', 'topbar'],
-        '/admin/edit' => ['AdminController', 'editProduct'],
+        '/admin/edit-product' => ['AdminController', 'editProduct'],
+        '/admin/update-product' => ['AdminController', 'updateProduct'],
+        '/admin/remove-product' => ['AdminController', 'remove'],
+        '/admin/create-product' => ['AdminController', 'createContent'],
+        '/admin/sold-history' => ['AdminController', 'mysoldproducts'],
         '/admin/logout' => ['AdminController', 'logout'],
     ],
 
