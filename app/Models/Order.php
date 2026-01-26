@@ -22,15 +22,15 @@ class Order {
         $stmt = $db->prepare(
             "SELECT 
     o.*, 
-    u.user_name AS name, 
+    u.user_name AS user_name, 
     u.user_email AS email,
     p.id AS product_id,
-    p.name AS product_name,
+    p.name AS name,
     p.price AS price
 FROM orders o
 JOIN users u ON u.id = o.user_id
 JOIN products p ON p.id = o.itemId
-WHERE o.user_id = ?
+WHERE o.user_id = ? AND o.status = 0
 ORDER BY o.created_at DESC
 "
         );
@@ -59,7 +59,31 @@ ORDER BY o.created_at DESC
             return false;
         }
     }
-    
+
+
+    public static function removeItem(int $user_id, int $order_id): bool
+{
+    try {
+        $db = Database::connect();
+
+        $stmt = $db->prepare(
+            "DELETE FROM orders WHERE user_id = :user_id AND id = :order_id"
+        );
+
+        // Execute with named parameters for clarity
+        $success = $stmt->execute([
+            ':user_id' => $user_id,
+            ':order_id' => $order_id
+        ]);
+
+        return $success; // true on success, false on failure
+    } catch (\PDOException $e) {
+        // Log the error for debugging
+        error_log("Order delete error: " . $e->getMessage());
+        return false;
+    }
+}
+
 
 
 

@@ -43,6 +43,9 @@ class AdminController extends Controller
         $this->view->assign('user', $this->user);
     }
 
+
+
+
     public function topbar()
     {   
         $stats = Product::noOfProductsSoldByMe($this->userId) ?: [];
@@ -53,14 +56,22 @@ class AdminController extends Controller
         ]);
     }
 
+
     public function dashboard()
     {
-        $stats = Order::dashboardStats();
+       
+        $vendorId = $_SESSION['user']['id'];
 
+        // Fetch vendor products
+        $products = Product::byVendor($vendorId);
+  
         $this->render('admin/index.tpl', [
-            'stats' => $stats
+            'products' => $products,
+            'vendor'  => $vendorId
         ]);
     }
+
+
 
     public function orders()
     {
@@ -71,18 +82,6 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateStatus()
-    {
-      
-
-        Order::updateStatus(
-            $_POST['order_id'] ?? null,
-            $_POST['status'] ?? null
-        );
-
-        header('Location: /admin/order/update');
-        exit;
-    }
 
     public function remove()
     {
@@ -309,4 +308,7 @@ class AdminController extends Controller
         header("Location: ../login");
         exit;
     }
+
+
+
 }

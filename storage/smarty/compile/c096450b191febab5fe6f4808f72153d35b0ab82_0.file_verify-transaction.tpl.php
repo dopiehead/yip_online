@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 23:46:13
-  from 'file:cart/verify-transaction.tpl' */
+/* Smarty version 5.7.0, created on 2026-01-25 22:51:31
+  from 'file:verify-transaction.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6976ab456ab521_31240901',
+  'unifunc' => 'content_69769e739e1c36_71574120',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '29c5b7953335adfa65888e408f61780c6cc9c3ab' => 
+    'c096450b191febab5fe6f4808f72153d35b0ab82' => 
     array (
-      0 => 'cart/verify-transaction.tpl',
-      1 => 1769384767,
+      0 => 'verify-transaction.tpl',
+      1 => 1769379456,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6976ab456ab521_31240901 (\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
+function content_69769e739e1c36_71574120 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_6913133516976ab45675918_30428095', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_11199763069769e73994a69_90869048', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_6913133516976ab45675918_30428095 extends \Smarty\Runtime\Block
+class Block_11199763069769e73994a69_90869048 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
+$_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views';
 ?>
 
 <div class="container mt-5">
@@ -81,13 +81,13 @@ foreach ($_from ?? [] as $_smarty_tpl->getVariable('item')->value) {
 $foreach0DoElse = false;
 ?>
                         <tr>
-                            <td><?php echo $_smarty_tpl->getValue('item')['name'];?>
+                            <td><?php echo $_smarty_tpl->getValue('item')['product_name'];?>
 </td>
                             <td><?php echo $_smarty_tpl->getSmarty()->getModifierCallback('number_format')($_smarty_tpl->getValue('item')['price'],2);?>
 </td>
-                            <td><?php echo $_smarty_tpl->getValue('item')['total'];?>
+                            <td><?php echo $_smarty_tpl->getValue('item')['quantity'];?>
 </td>
-                            <td><?php echo $_smarty_tpl->getValue('item')['price']*$_smarty_tpl->getSmarty()->getModifierCallback('number_format')($_smarty_tpl->getValue('item')['total'],2);?>
+                            <td><?php echo $_smarty_tpl->getValue('item')['price']*$_smarty_tpl->getSmarty()->getModifierCallback('number_format')($_smarty_tpl->getValue('item')['quantity'],2);?>
 </td>
                         </tr>
                         <?php
@@ -123,8 +123,8 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </div>
 
         <div class="text-center mt-4">
-            <a href="../admin/order-history" class="btn btn-success">View My Orders</a>
-            <a href="../index" class="btn btn-primary">Continue Shopping</a>
+            <a href="/orders" class="btn btn-success">View My Orders</a>
+            <a href="/shop" class="btn btn-primary">Continue Shopping</a>
         </div>
     <?php }?>
 

@@ -7,11 +7,11 @@
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="/index">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="index">Products</a></li>
         {if isset($smarty.session.user)}
-            <li class="nav-item"><a class="nav-link" href="cart">Cart</a></li>
+            <li class="nav-item"><a class="nav-link" href="cart">Cart<span class='numbering'></span></a></li>
             <li class="nav-item"><a class="nav-link" href="admin/index"> Admin</a></li>
-            <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="admin/logout">Logout</a></li>
         {else}
             <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="register">Register</a></li>

@@ -14,7 +14,7 @@ class VerifyTransactionController extends Controller
         // Required GET parameters in test mode
         if (!isset($_GET['status'], $_GET['reference'], $_GET['id'], $_GET['amount'])) {
             $this->view->assign('error', 'Missing payment parameters.');
-            $this->view->display('verify-transaction.tpl');
+            $this->view->display('cart/verify-transaction.tpl');
             return;
         }
 
@@ -26,29 +26,31 @@ class VerifyTransactionController extends Controller
         // Load user
         if (!isset($_SESSION['user']) || $_SESSION['user']['id'] !== $userId) {
             $this->view->assign('error', 'User not logged in or invalid.');
-            $this->view->display('verify-transaction.tpl');
+            $this->view->display('cart/verify-transaction.tpl');
             return;
         }
 
         $user = User::find($userId);
         if (!$user) {
             $this->view->assign('error', 'User not found.');
-            $this->view->display('verify-transaction.tpl');
+            $this->view->display('cart/verify-transaction.tpl');
             return;
         }
 
         if ($status !== 'success') {
             $this->view->assign('error', 'Payment failed.');
-            $this->view->display('verify-transaction.tpl');
+            $this->view->display('cart/verify-transaction.tpl');
             return;
         }
 
         // Payment confirmed in test mode ✅
-        $cartItems = Order::cart($userId); // Get user's cart items
+        $cartItems = Order::cart($userId) ?? []; // Get user's cart items
 
         foreach ($cartItems as $item) {
             // mark item paid
             Order::markPaid($item['id']); 
+
+            Product::addToSoldQuantity($item['product_id'], $item['total']) ;
 
             // reduce stock
             Product::removeFromQuantity($item['product_id'], $item['total']);
@@ -73,10 +75,10 @@ class VerifyTransactionController extends Controller
             'reference'     => $reference,
             'amount'        => $amount,
             'cart_items'    => $cartItems,
-            'subtotal'      => number_format($subtotal, 2),
-            'VAT'           => number_format($VAT, 2),
-            'delivery_fee'  => number_format($deliveryFee, 2),
-            'grand_total'   => number_format($grandTotal, 2),
+            'subtotal'      => $subtotal,
+            'VAT'           => $VAT,
+            'delivery_fee'  => $deliveryFee,
+            'grand_total'   => $grandTotal,
             'buyer'         => $userId,
             'userName'      => $user['user_name'],
             'userEmail'     => $user['user_email'],
@@ -85,6 +87,6 @@ class VerifyTransactionController extends Controller
             'paystackKey'   => $_ENV['paystack_key'] ?? ''
         ]);
 
-        $this->view->display('verify-transaction.tpl');
+        $this->view->display('cart/verify-transaction.tpl');
     }
 }

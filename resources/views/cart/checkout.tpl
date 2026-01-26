@@ -78,7 +78,7 @@ $(function () {
             callback: function (response) {
                 // ✅ ALWAYS use response.reference
                 window.location.href =
-                    "verify-transaction" +
+                    "cart/verify-transaction" +
                     "?status=success" +
                     "&reference=" + encodeURIComponent(response.reference) +
                     "&id=" + encodeURIComponent(buyer) +

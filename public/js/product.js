@@ -11,6 +11,7 @@ $(document).ready(function () {
         const buyer_id = $('#buyer_id').val();
         const noofitem = $('#noofitem').val();
         const csrf = $('#csrf').val();
+        
 
         const missing = [];
 

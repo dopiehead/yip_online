@@ -35,10 +35,10 @@
                     <tbody>
                         {foreach $cart_items as $item}
                         <tr>
-                            <td>{$item.product_name}</td>
+                            <td>{$item.name}</td>
                             <td>{$item.price|number_format:2}</td>
-                            <td>{$item.quantity}</td>
-                            <td>{$item.price * $item.quantity|number_format:2}</td>
+                            <td>{$item.total}</td>
+                            <td>{$item.price * $item.total|number_format:2}</td>
                         </tr>
                         {/foreach}
                     </tbody>
@@ -64,8 +64,8 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="/orders" class="btn btn-success">View My Orders</a>
-            <a href="/shop" class="btn btn-primary">Continue Shopping</a>
+            <a href="../admin/order-history" class="btn btn-success">View My Orders</a>
+            <a href="../index" class="btn btn-primary">Continue Shopping</a>
         </div>
     {/if}
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 02:37:32
+/* Smarty version 5.7.0, created on 2026-01-25 23:22:39
   from 'file:admin/components/topbar.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_697581ece12932_34260168',
+  'unifunc' => 'content_6976a5bf22fe49_60658302',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fd8d88c26e82f3bd97bc84766b26ac68b43ef3a6' => 
     array (
       0 => 'admin/components/topbar.tpl',
-      1 => 1769308647,
+      1 => 1769383356,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_697581ece12932_34260168 (\Smarty\Template $_smarty_tpl) {
+function content_6976a5bf22fe49_60658302 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin/components';
 ?>
 
@@ -35,7 +35,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
 </span>
            <div class='text-center user-avatar border-none rounded rounded-circle  d-flex justify-content-center align-items-center'></div>                
            
-                <img src="<?php echo htmlspecialchars((string)$_smarty_tpl->getValue('user')['user_image'], ENT_QUOTES, 'UTF-8', true);?>
+                <img class='d-none' src="<?php echo htmlspecialchars((string)$_smarty_tpl->getValue('user')['user_image'], ENT_QUOTES, 'UTF-8', true);?>
 " alt="" class="user-avatar">
          
                 <div>

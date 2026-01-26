@@ -33,12 +33,28 @@ class Product
     }
 
     // Fetch products bought by a user (not sold by them and unsold)
-    public static function productsBoughtByMe(int $userId): array
+    public static function productsBoughtByMe(int $vendorId): array
     {
-        $stmt = Database::connect()->prepare("SELECT * FROM " . self::$table . " WHERE user_id != ? AND sold = 0");
-        $stmt->execute([$userId]);
+        $sql = "SELECT p.id, p.name, p.price, p.image, p.quantity_sold, p.user_id AS vendor_id,
+       br.reference_no, br.client_name, br.amount, br.date_added
+FROM products p
+JOIN orders o ON o.id = p.id
+JOIN buyer_receipt br ON br.client_id = o.user_id
+WHERE p.user_id = :vendor_id
+AND o.status = 1
+AND br.date_added = (SELECT MAX(br2.date_added)
+                     FROM buyer_receipt br2
+                     JOIN orders o2 ON br2.client_id = o2.user_id
+                     WHERE o2.id = p.id)
+";
+    
+        $stmt = Database::connect()->prepare($sql);
+        $stmt->execute(['vendor_id' => $vendorId]);
+    
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
+    
 
     // Fetch products sold by a user
     public static function productsSoldByMe(int $userId): array
@@ -75,6 +91,19 @@ class Product
         return $stmt->execute($values);
     }
 
+
+    public static function addToSoldQuantity(int $id, int $total): bool
+    {
+        $sql = "UPDATE " . self::$table . "
+                SET quantity_sold = quantity_sold + ?
+                WHERE id = ?";
+    
+        $stmt = Database::connect()->prepare($sql);
+    
+        return $stmt->execute([$total, $id]);
+    }
+
+
     public static function removeFromQuantity(int $id, int $total): bool
     {
         $sql = "UPDATE " . self::$table . "
@@ -87,7 +116,7 @@ class Product
     }
     
 
-    
+
     public static function restoreQuantity(int $id, int $total): bool
     {
         $sql = "UPDATE " . self::$table . "
@@ -107,7 +136,7 @@ class Product
         $imageUrl = CloudinaryService::upload($file['tmp_name'], "products");
 
         $stmt = Database::connect()->prepare(
-            "INSERT INTO " . self::$table . " (name, price, image, user_id, quantity, sold, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
+            "INSERT INTO " . self::$table . " (name, price, image, user_id, quantity, quantity_sold, sold, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
         );
         $stmt->execute([
             $data['name'],
@@ -115,6 +144,7 @@ class Product
             $imageUrl,
             $data['user_id'],
             $data['quantity'] ?? 1,
+            $data['quantity_sold'] ?? 0,
             $data['sold'] ?? 0,
             $data['created_at'] ?? date("Y-m-d H:i:s")
 
@@ -123,6 +153,24 @@ class Product
         return $imageUrl;
     }
 
+    public static function byVendor(int $vendorId): array
+{
+    $sql = "SELECT 
+                id,
+                name,
+                price,
+                quantity,
+                quantity_sold,      
+                created_at
+            FROM products
+            WHERE user_id = ?
+            ORDER BY created_at DESC";
+
+    $stmt = Database::connect()->prepare($sql);
+    $stmt->execute([$vendorId]);
+
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+}
 
 
     public static function deleteProduct($id): array

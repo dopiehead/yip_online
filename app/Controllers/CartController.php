@@ -90,18 +90,34 @@ class CartController extends Controller {
 
     public function remove() {
         header('Content-Type: application/json');
-        $id = (int) $_POST['product_id'];
-       
-
-        echo json_encode([
-            'success' => true,
-           
-        ]);
+    
+    
+        if (!isset($_SESSION['user'])) {
+            echo json_encode(['success' => false, 'message' => 'User not logged in']);
+            return;
+        }
+    
+        // Read JSON input
+        $data = json_decode(file_get_contents('php://input'), true);
+    
+        if (!isset($data['product_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Product ID missing']);
+            return;
+        }
+    
+        $user_id = $_SESSION['user']['id'];
+        $id = (int) $data['product_id'];
+    
+        $success = Order::removeItem($user_id, $id);
+    
+        if ($success) {
+            echo json_encode(['success' => true, 'message' => 'Item removed successfully']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Failed to remove item']);
+        }
     }
+    
 
-    public function get() {
-        
-    }
 
 }
 

@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
-    $('.remove-item').on('click', function() {
+    $(document).on('click', '.remove-item', function() {
+      
         const button = $(this);
         const orderId = button.data('id');
         const csrfToken = $("#csrf").val(); // make sure session csrf is available
@@ -8,7 +9,7 @@ $(document).ready(function() {
         if (!confirm('Are you sure you want to remove this item?')) return;
 
         $.ajax({
-            url: '/cart/remove',  // your remove action
+            url: 'cart/remove',  // your remove action
             method: 'POST',
             contentType: 'application/json',
             dataType: 'json',

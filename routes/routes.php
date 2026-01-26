@@ -30,12 +30,17 @@ return [
         '/admin/logout' => ['AdminController', 'logout'],
     ],
 
+    'inventory'=>[
+        '/vendor/inventory' => ['VendorInventoryController', 'index'],
+
+    ],
+
     'cart' => [
         '/cart' => ['CartController', 'index'],
         '/cart/add' => ['CartController', 'add'],
         '/cart/remove' => ['CartController', 'remove'],
         '/cart/get' => ['CartController', 'get'],
-        '/verify-transaction' => ['VerifyTransactionController', 'index'],
+        '/cart/verify-transaction' => ['VerifyTransactionController', 'index'],
     ],
 
 

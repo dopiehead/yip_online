@@ -22,7 +22,7 @@
             {assign var="itemTotal" value=$item.total * $item.price}
             {assign var="grandTotal" value=$grandTotal + $itemTotal}
         <tr>
-            <td>{$item.product_name}</td>
+            <td>{$item.name}</td>
             <td>{$item.total}</td>
             <td>$ {$item.price}</td>
             <td>$ {$itemTotal}</td>
@@ -42,4 +42,5 @@
     <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
 </div>
 {/if}
+<script src='js/remove-item.js'></script>
 {/block}

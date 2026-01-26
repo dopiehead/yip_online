@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 22:31:48
+/* Smarty version 5.7.0, created on 2026-01-25 23:28:56
   from 'file:cart/checkout.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_697699d4492f38_68926095',
+  'unifunc' => 'content_6976a7380aec90_89572283',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e44aef22560cb87d65ab7435a8cdc43af3796c8e' => 
     array (
       0 => 'cart/checkout.tpl',
-      1 => 1769380232,
+      1 => 1769381625,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_697699d4492f38_68926095 (\Smarty\Template $_smarty_tpl) {
+function content_6976a7380aec90_89572283 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1075369829697699d44796c7_44182436', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_469942056976a738094ac5_55139811', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_1075369829697699d44796c7_44182436 extends \Smarty\Runtime\Block
+class Block_469942056976a738094ac5_55139811 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
@@ -126,7 +126,7 @@ $(function () {
             callback: function (response) {
                 // ✅ ALWAYS use response.reference
                 window.location.href =
-                    "verify-transaction" +
+                    "cart/verify-transaction" +
                     "?status=success" +
                     "&reference=" + encodeURIComponent(response.reference) +
                     "&id=" + encodeURIComponent(buyer) +

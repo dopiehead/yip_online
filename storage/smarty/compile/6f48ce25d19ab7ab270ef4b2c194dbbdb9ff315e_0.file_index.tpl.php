@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 22:18:59
+/* Smarty version 5.7.0, created on 2026-01-26 00:18:45
   from 'file:cart/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_697696d3bacd00_34575527',
+  'unifunc' => 'content_6976b2e5eb1e23_49170359',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f48ce25d19ab7ab270ef4b2c194dbbdb9ff315e' => 
     array (
       0 => 'cart/index.tpl',
-      1 => 1769359778,
+      1 => 1769386702,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_697696d3bacd00_34575527 (\Smarty\Template $_smarty_tpl) {
+function content_6976b2e5eb1e23_49170359 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_376559466697696d3b45948_44247517', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_509755296976b2e5e6d188_63007110', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_376559466697696d3b45948_44247517 extends \Smarty\Runtime\Block
+class Block_509755296976b2e5e6d188_63007110 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
@@ -65,7 +65,7 @@ $foreach0DoElse = false;
             <?php $_smarty_tpl->assign('itemTotal', $_smarty_tpl->getValue('item')['total']*$_smarty_tpl->getValue('item')['price'], false, NULL);?>
             <?php $_smarty_tpl->assign('grandTotal', $_smarty_tpl->getValue('grandTotal')+$_smarty_tpl->getValue('itemTotal'), false, NULL);?>
         <tr>
-            <td><?php echo $_smarty_tpl->getValue('item')['product_name'];?>
+            <td><?php echo $_smarty_tpl->getValue('item')['name'];?>
 </td>
             <td><?php echo $_smarty_tpl->getValue('item')['total'];?>
 </td>
@@ -94,6 +94,10 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
     <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
 </div>
 <?php }
+echo '<script'; ?>
+ src='js/remove-item.js'><?php echo '</script'; ?>
+>
+<?php
 }
 }
 /* {/block "content"} */
