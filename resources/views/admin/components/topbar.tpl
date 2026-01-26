@@ -9,7 +9,7 @@
                 <span style="color: #6b7280; font-size: 14px;">{$user.created_at|escape}</span>
            <div class='text-center user-avatar border-none rounded rounded-circle  d-flex justify-content-center align-items-center'></div>                
            
-                <img class='d-none' src="{$user.user_image|escape}" alt="" class="user-avatar">
+                <img class='d-none' src="" alt="" class="user-avatar">
          
                 <div>
                     <div style="font-weight: 600; font-size: 14px;">{$user.user_name|escape}</div>
@@ -25,11 +25,7 @@
                         <i class="fas fa-bell"></i> (<span class='text-danger'>0</span>)
                     </a>
                 </div> 
-                <div class="dropdown">
-                    <button class="btn" type="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
-                </div>
+
             </div>
 
 {/if}

@@ -4,12 +4,12 @@
 <h2 class="mb-4">Checkout</h2>
 
 <form id="paymentForm">
-    <input type="hidden" name="csrf" value="{$csrf_token}">
-    <input type="hidden" id="buyer_id" value="{$buyer}">
-    <input type="hidden" id="amount" value="{$subtotal}">
-    <input type="hidden" id="email" value="{$email}">
-    <input type="hidden" id="key" value="{$paystackKey}">
-    <input type="hidden" id="txn_ref" value="{$txn_ref}">
+    <input type="hidden" name="csrf" value="{$csrf_token|escape}">
+    <input type="hidden" id="buyer_id" value="{$buyer|escape}">
+    <input type="hidden" id="amount" value="{$subtotal|escape}">
+    <input type="hidden" id="email" value="{$email|escape}">
+    <input type="hidden" id="key" value="{$paystackKey|escape}">
+    <input type="hidden" id="txn_ref" value="{$txn_ref|escape}">
 
     <div class="mb-3">
         <label>Delivery Address</label>

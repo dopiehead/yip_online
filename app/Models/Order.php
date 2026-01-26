@@ -77,6 +77,7 @@ ORDER BY o.created_at DESC
         ]);
 
         return $success; // true on success, false on failure
+    
     } catch (\PDOException $e) {
         // Log the error for debugging
         error_log("Order delete error: " . $e->getMessage());

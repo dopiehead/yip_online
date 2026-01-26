@@ -6,14 +6,16 @@
     <div class="logo d-flex  justify-content-between">
         <a class='text-white text-decoration-none' href='../index'>Yiponline</a>
     </div>
+    
 
     <nav class="nav flex-column">
+    {if isset($user) && $user.user_type == 'vendor'}
         <a class="nav-link" href="index"><i class="fas fa-home"></i> <span class='link-label'>Home</span></a>
         <a class="nav-link" href="post-contents"><i class="fas fa-shopping-cart"></i> <span class='link-label'>Post Ad</span></a>
         <a class="nav-link" href="contents"><i class="fas fa-book"></i> <span class='link-label'>Contents</span></a>
-        <a class="nav-link" href="order-history"><i class="fas fa-history"></i> <span class='link-label'>Order History</span></a>
         <a class="nav-link" href="sold-history"><i class="fas fa-clock"></i> <span class='link-label'>Sold History</span></a>
-
+    {/if}
+        <a class="nav-link" href="order-history"><i class="fas fa-history"></i> <span class='link-label'>Order History</span></a>
         <!-- Settings toggle link -->
 
     </nav>

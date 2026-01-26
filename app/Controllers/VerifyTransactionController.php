@@ -50,10 +50,19 @@ class VerifyTransactionController extends Controller
             // mark item paid
             Order::markPaid($item['id']); 
 
-            Product::addToSoldQuantity($item['product_id'], $item['total']) ;
+       // Increase sold quantity
+            Product::addToSoldQuantity( $item['product_id'], $item['total']);
 
-            // reduce stock
-            Product::removeFromQuantity($item['product_id'], $item['total']);
+// Reduce available stock
+         Product::removeFromQuantity($item['product_id'], $item['total']);
+
+// Fetch updated product quantity
+         $product = Product::findById($item['product_id']);
+
+// If stock is exhausted, mark as sold out
+         if ($product && (int)$product['quantity'] <= 0) {
+          Product::changeToSold($item['product_id']);
+         }
         }
         
         // Save receipt

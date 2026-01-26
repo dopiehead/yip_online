@@ -22,6 +22,7 @@ return [
         '/admin/contents' => ['AdminController', 'myproducts'],
         '/admin/post-contents' => ['AdminController', 'postContents'],
         '/admin/components/topbar' => ['AdminController', 'topbar'],
+        '/admin/components/sidebar' => ['AdminController', 'sidebar'],
         '/admin/edit-product' => ['AdminController', 'editProduct'],
         '/admin/update-product' => ['AdminController', 'updateProduct'],
         '/admin/remove-product' => ['AdminController', 'remove'],
@@ -41,6 +42,12 @@ return [
         '/cart/remove' => ['CartController', 'remove'],
         '/cart/get' => ['CartController', 'get'],
         '/cart/verify-transaction' => ['VerifyTransactionController', 'index'],
+    ],
+
+    'navbar'=>[
+
+        '/partials/navbar' => ['NavBarController', 'navbar'], 
+
     ],
 
 

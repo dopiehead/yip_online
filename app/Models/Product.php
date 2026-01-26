@@ -33,36 +33,87 @@ class Product
     }
 
     // Fetch products bought by a user (not sold by them and unsold)
-    public static function productsBoughtByMe(int $vendorId): array
-    {
-        $sql = "SELECT p.id, p.name, p.price, p.image, p.quantity_sold, p.user_id AS vendor_id,
-       br.reference_no, br.client_name, br.amount, br.date_added
-FROM products p
-JOIN orders o ON o.id = p.id
-JOIN buyer_receipt br ON br.client_id = o.user_id
-WHERE p.user_id = :vendor_id
-AND o.status = 1
-AND br.date_added = (SELECT MAX(br2.date_added)
-                     FROM buyer_receipt br2
-                     JOIN orders o2 ON br2.client_id = o2.user_id
-                     WHERE o2.id = p.id)
-";
-    
-        $stmt = Database::connect()->prepare($sql);
-        $stmt->execute(['vendor_id' => $vendorId]);
-    
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-    
-    
+    public static function productsBoughtByMe(int $buyerId): array
+{
+    $sql = "
+        SELECT 
+            p.id,
+            p.name AS name,
+            p.price AS price,
+            p.image AS image,
+            p.quantity_sold,
+            p.user_id AS vendor_id,
+
+            br.reference_no,
+            br.client_id,
+            br.client_name,
+            br.amount,
+            br.date_added
+
+        FROM orders o
+        JOIN products p 
+            ON p.id = o.itemId
+        JOIN buyer_receipt br 
+            ON br.client_id = o.user_id
+
+        WHERE o.user_id = :buyer_id
+          AND o.status = 1
+
+        ORDER BY br.date_added DESC
+    ";
+
+    $stmt = Database::connect()->prepare($sql);
+
+    // ✅ Correct named binding
+    $stmt->bindValue(':buyer_id', $buyerId, \PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+}
+   
 
     // Fetch products sold by a user
-    public static function productsSoldByMe(int $userId): array
+    public static function productsSoldByMe(int $vendorId): array
     {
-        $stmt = Database::connect()->prepare("SELECT * FROM " . self::$table . " WHERE user_id = ? AND sold = 1");
-        $stmt->execute([$userId]);
+        $sql = "
+            SELECT 
+                p.id,
+                p.name,
+                p.price,
+                p.image,
+                p.quantity_sold,
+                p.user_id AS vendor_id,
+    
+                o.user_id AS buyer_id,
+    
+                br.reference_no,
+                br.client_id,
+                br.client_name,
+                br.amount,
+                br.date_added
+    
+            FROM orders o
+            JOIN products p 
+                ON p.id = o.itemId
+    
+            JOIN buyer_receipt br 
+                ON br.client_id = o.user_id
+    
+            WHERE p.user_id = :vendor_id
+              AND o.status = 1
+    
+            ORDER BY br.date_added DESC
+        ";
+    
+        $stmt = Database::connect()->prepare($sql);
+    
+        // ✅ Correct named binding
+        $stmt->bindValue(':vendor_id', $vendorId, \PDO::PARAM_INT);
+        $stmt->execute();
+    
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
 
     // Count products sold by a user
     public static function noOfProductsSoldByMe(int $userId): array
@@ -113,6 +164,23 @@ AND br.date_added = (SELECT MAX(br2.date_added)
         $stmt = Database::connect()->prepare($sql);
     
         return $stmt->execute([$total, $id, $total]);
+
+
+    }
+
+
+
+    public static function changeToSold(int $id): bool
+    {
+        $sql = "UPDATE " . self::$table . "
+                SET sold = 1
+                WHERE id = ?";
+    
+        $stmt = Database::connect()->prepare($sql);
+    
+        return $stmt->execute([$id]);
+
+
     }
     
 

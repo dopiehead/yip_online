@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 23:22:39
+/* Smarty version 5.7.0, created on 2026-01-26 02:34:16
   from 'file:admin/components/topbar.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6976a5bf22fe49_60658302',
+  'unifunc' => 'content_6976d2a83cb7b8_57784840',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fd8d88c26e82f3bd97bc84766b26ac68b43ef3a6' => 
     array (
       0 => 'admin/components/topbar.tpl',
-      1 => 1769383356,
+      1 => 1769394852,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6976a5bf22fe49_60658302 (\Smarty\Template $_smarty_tpl) {
+function content_6976d2a83cb7b8_57784840 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin/components';
 ?>
 
@@ -35,8 +35,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
 </span>
            <div class='text-center user-avatar border-none rounded rounded-circle  d-flex justify-content-center align-items-center'></div>                
            
-                <img class='d-none' src="<?php echo htmlspecialchars((string)$_smarty_tpl->getValue('user')['user_image'], ENT_QUOTES, 'UTF-8', true);?>
-" alt="" class="user-avatar">
+                <img class='d-none' src="" alt="" class="user-avatar">
          
                 <div>
                     <div style="font-weight: 600; font-size: 14px;"><?php echo htmlspecialchars((string)$_smarty_tpl->getValue('user')['user_name'], ENT_QUOTES, 'UTF-8', true);?>
@@ -54,11 +53,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
                         <i class="fas fa-bell"></i> (<span class='text-danger'>0</span>)
                     </a>
                 </div> 
-                <div class="dropdown">
-                    <button class="btn" type="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
-                </div>
+
             </div>
 
 <?php }?>

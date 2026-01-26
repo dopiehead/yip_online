@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>eCarpentry Sign Up</title>
+    <title>{$title|escape}</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
         <!-- LEFT SIDE / SIGN UP FORM -->
         <div class="signup-section">
             <form id="signupForm" class="signup-form">
-
+            <input type="hidden" name="csrf" value="{$csrf_token|escape}">
                 <h1 class="form-title">Create Account</h1>
 
                 <!-- FULL NAME -->
@@ -87,7 +87,7 @@
                             placeholder="••••••••••" 
                             required
                         >
-                        <input type="hidden" name="csrf" value="{$csrf_token|escape}">
+
                         <button 
                             type="button" 
                             class="password-toggle" 

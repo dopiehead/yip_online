@@ -39,7 +39,7 @@ class CheckoutController extends Controller
         $_SESSION['txn_ref'] = $txn_ref;
 
         $this->view->assign([
-            'csrf_token'  => $_SESSION['csrf'],
+            'csrf_token'  => $_SESSION['csrf'] ?? '',
             'buyer'       => $buyer,
             'email'       => $_SESSION['user']['user_email'],
             'cart_items'  => $cartItems,

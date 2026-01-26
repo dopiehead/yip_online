@@ -8,16 +8,21 @@ use App\Services\MailService;
 class AuthController extends Controller {
 
     public function register() {
-        
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
         $this->render('auth/register.tpl',[
-            'csrf_token' => $_SESSION['csrf']
+            'csrf_token' => $_SESSION['csrf'] ?? ""
         ]);
-    }
+    
+}
 
     public function registerPost() {
         header('Content-Type: application/json');
       
-    
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             echo json_encode([
                 'status' => 'error',
@@ -99,7 +104,7 @@ class AuthController extends Controller {
            
             'title' => 'Login page',
             'redirectUrl' => $_SERVER['REQUEST_URI'],
-            'csrf_token' => $_SESSION['csrf']
+            'csrf_token' => $_SESSION['csrf'] ?? ''
         ]);
     }
 
@@ -109,6 +114,9 @@ class AuthController extends Controller {
        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
+                if (!isset($_SESSION['csrf'])) {
+                    $_SESSION['csrf'] = bin2hex(random_bytes(32));
+                }
                 // CSRF check
                 if (!isset($_POST['csrf']) || $_POST['csrf'] !== $_SESSION['csrf']) {
                     throw new \Exception("Invalid CSRF token");
@@ -135,7 +143,7 @@ class AuthController extends Controller {
                     'user_email' => $user['user_email'],
                     'user_type'  => $user['user_type'],
                     'created_at' => $user['created_at'],
-                    'user_image' => $user['user_image'] ?? null
+                   
                 ];
 
 

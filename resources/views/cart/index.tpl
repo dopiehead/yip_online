@@ -22,12 +22,12 @@
             {assign var="itemTotal" value=$item.total * $item.price}
             {assign var="grandTotal" value=$grandTotal + $itemTotal}
         <tr>
-            <td>{$item.name}</td>
-            <td>{$item.total}</td>
-            <td>$ {$item.price}</td>
-            <td>$ {$itemTotal}</td>
+            <td>{$item.name|escape}</td>
+            <td>{$item.total|escape}</td>
+            <td>$ {$item.price|escape}</td>
+            <td>$ {$itemTotal|escape}</td>
             <td>
-                <button class="btn btn-sm btn-danger remove-item" data-id="{$item.id}">
+                <button class="btn btn-sm btn-danger remove-item" data-id="{$item.id|escape}">
                     ✕
                 </button>
                 <input id='crsf' name='csrf' type='hidden' value='{$csrf_token|escape}'>
@@ -38,7 +38,7 @@
 </table>
 
 <div class="d-flex justify-content-between mt-3">
-    <h4>Total: $ {$grandTotal}</h4>
+    <h4>Total: $ {$grandTotal|escape}</h4>
     <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
 </div>
 {/if}

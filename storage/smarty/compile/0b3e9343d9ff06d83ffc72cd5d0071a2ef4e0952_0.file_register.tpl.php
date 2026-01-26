@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-24 22:06:13
+/* Smarty version 5.7.0, created on 2026-01-26 09:26:38
   from 'file:auth/register.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_69754255c2e9f5_92269940',
+  'unifunc' => 'content_6977334e583fa1_90589677',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0b3e9343d9ff06d83ffc72cd5d0071a2ef4e0952' => 
     array (
       0 => 'auth/register.tpl',
-      1 => 1769292234,
+      1 => 1769419178,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,15 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_69754255c2e9f5_92269940 (\Smarty\Template $_smarty_tpl) {
+function content_6977334e583fa1_90589677 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/auth';
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>eCarpentry Sign Up</title>
+    <title><?php echo htmlspecialchars((string)$_smarty_tpl->getValue('title'), ENT_QUOTES, 'UTF-8', true);?>
+</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +55,8 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
         <!-- LEFT SIDE / SIGN UP FORM -->
         <div class="signup-section">
             <form id="signupForm" class="signup-form">
-
+            <input type="hidden" name="csrf" value="<?php echo htmlspecialchars((string)$_smarty_tpl->getValue('csrf_token'), ENT_QUOTES, 'UTF-8', true);?>
+">
                 <h1 class="form-title">Create Account</h1>
 
                 <!-- FULL NAME -->
@@ -115,8 +117,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
                             placeholder="••••••••••" 
                             required
                         >
-                        <input type="hidden" name="csrf" value="<?php echo htmlspecialchars((string)$_smarty_tpl->getValue('csrf_token'), ENT_QUOTES, 'UTF-8', true);?>
-">
+
                         <button 
                             type="button" 
                             class="password-toggle" 

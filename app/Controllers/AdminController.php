@@ -17,21 +17,16 @@ class AdminController extends Controller
         parent::__construct();
 
         // Must be logged in
-        Auth::check();   
+        Auth::check();
 
-        // Must be vendor/admin
-        Auth::admin();   
-
-        // Get logged-in user from session safely
+        // Get logged-in user safely
         $this->user = $_SESSION['user'] ?? null;
-
         if (!$this->user) {
             header('Location: /login');
             exit;
         }
 
-        // Ensure user ID exists
-        $this->userId = $this->user['id'] ?? null;
+        $this->userId = $this->user['id'] ?? 0;
         if (!$this->userId) {
             $this->render('errors/500.tpl', [
                 'message' => 'User ID not found in session'
@@ -43,272 +38,257 @@ class AdminController extends Controller
         $this->view->assign('user', $this->user);
     }
 
-
-
+    // =======================
+    // VIEWS
+    // =======================
 
     public function topbar()
-    {   
-        $stats = Product::noOfProductsSoldByMe($this->userId) ?: [];
-
+    {
+        // Only vendors/admins have stats
+        $stats = $this->isVendor() ? Product::noOfProductsSoldByMe($this->userId) : [];
         $this->render('admin/components/topbar.tpl', [
             'stats' => $stats,
-            'user'  => $this->user
+            'user' => $this->user
         ]);
     }
 
+    public function sidebar()
+    {
+        $this->render('admin/components/sidebar.tpl', [
+            'user' => $this->user
+        ]);
+    }
 
     public function dashboard()
     {
-       
-        $vendorId = $_SESSION['user']['id'];
+        $this->requireVendor();
 
-        // Fetch vendor products
-        $products = Product::byVendor($vendorId);
-  
+        $products = Product::byVendor($this->userId);
         $this->render('admin/index.tpl', [
             'products' => $products,
-            'vendor'  => $vendorId
+            'vendor' => $this->userId
         ]);
     }
-
-
 
     public function orders()
     {
+        // All logged-in users can see order history
         $products = Product::productsBoughtByMe($this->userId) ?: [];
-
         $this->render('admin/order-history.tpl', [
-            'products' => $products,
+            'products' => $products
         ]);
     }
 
-
-    public function remove()
+    public function myproducts()
     {
+        $this->requireVendor();
+        $products = Product::productsByMe($this->userId) ?: [];
+        $this->render('admin/contents.tpl', [
+            'products' => $products,
+            'user' => $this->user,
+            'title' => 'Contents'
+        ]);
+    }
+
+    public function mysoldproducts()
+    {
+        $this->requireVendor();
+        $products = Product::productsSoldByMe($this->userId) ?: [];
+        $this->render('admin/sold-history.tpl', [
+            'products' => $products,
+            'user' => $this->user,
+            'title' => 'Sold History'
+        ]);
+    }
+
+    public function postContents()
+    {
+        $this->requireVendor();
+
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
+
+        $this->render('admin/post-contents.tpl', [
+            'csrf_token' => $_SESSION['csrf'] ?? ''
+        ]);
+    }
+
+    public function editProduct()
+    {
+        $this->requireVendor();
+
+        $productId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+        $product = Product::findById($productId);
+
+        $this->render('admin/edit-product.tpl', [
+            'product' => $product ?? null
+        ]);
+    }
+
+    public function dashboardRemoveProduct()
+    {
+        $this->requireVendor();
         header('Content-Type: application/json');
-    
+
         $id = $_POST['id'] ?? null;
-    
         if (!$id) {
             echo json_encode([
-                "status"  => "error",
+                "status" => "error",
                 "message" => "Invalid product ID"
             ]);
             return;
         }
-    
+
         $deleted = Product::deleteProduct($id);
-    
-        if ($deleted) {
-            echo json_encode([
-                "status"  => "success",
-                "message" => "Item has been deleted successfully"
-            ]);
-        } else {
-            echo json_encode([
-                "status"  => "error",
-                "message" => "Unable to delete product"
-            ]);
-        }
-    }
-    
-
-
-    public function myproducts()
-    {
-        $products = Product::productsByMe($this->userId) ?: [];
-
-        $this->render('admin/contents.tpl', [
-            'products' => $products,
-            'user'     => $this->user,
-            'title'    => 'Contents'
-        ]);
-    }
-
-
-
-    public function mysoldproducts()
-    {
-        $products = Product::productsSoldByMe($this->userId) ?: [];
-
-        $this->render('admin/sold-history.tpl', [
-            'products' => $products,
-            'user'     => $this->user,
-            'title'    => 'sold history'
-        ]);
-    }
-
-
-    public function postContents()
-    {
-         
-        $this->render('admin/post-contents.tpl',[
-            'csrf_token' => $_SESSION['csrf'],
-            
-        ]);
-    }
-
-
-    public function createContent() {
-
-    // Only allow POST
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         echo json_encode([
-            'success' => false,
-            'message' => 'Invalid request method.'
+            "status" => $deleted ? "success" : "error",
+            "message" => $deleted ? "Item deleted successfully" : "Unable to delete product"
         ]);
-        exit;
     }
 
-    // Logged-in user
-    $user = $this->user;
-    $userId = $this->userId;
+    // =======================
+    // CREATE / UPDATE PRODUCTS
+    // =======================
 
-    // Collect form data
-    $name = trim($_POST['product_name'] ?? '');
-    $price = trim($_POST['product_price'] ?? '');
-    $quantity = intval($_POST['product_quantity'] ?? 1);
-    $files = $_FILES['product_images'] ?? null;
+    public function createContent()
+    {
+        $this->requireVendor();
 
-    $errors = [];
-
-    if (empty($name)) $errors[] = 'Product name is required.';
-    if (!is_numeric($price) || $price < 0) $errors[] = 'Price must be a valid number.';
-    if ($quantity < 1) $errors[] = 'Quantity must be at least 1.';
-    if (!$files || empty($files['name'][0])) $errors[] = 'At least one image is required.';
-
-    if ($errors) {
-        echo json_encode([
-            'success' => false,
-            'message' => implode('<br>', $errors)
-        ]);
-        exit;
-    }
-
-    $uploadedImages = [];
-
-    // Handle multiple files
-    foreach ($files['tmp_name'] as $index => $tmpName) {
-        $fileName = $files['name'][$index];
-        $fileType = $files['type'][$index];
-
-        // Basic validation
-        if (!in_array($fileType, ['image/jpeg','image/png','image/jpg'])) {
-            echo json_encode([
-                'success' => false,
-                'message' => "File {$fileName} must be a JPG or PNG image."
-            ]);
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
             exit;
         }
 
-        // Upload each image via Cloudinary
-        try {
-            $uploadedUrl = Product::createWithImage([
-                'name' => $name,
-                'price' => $price,
-                'user_id' => $userId,
-                'quantity' => $quantity
-            ], [
-                'tmp_name' => $tmpName
-            ]);
+        $name = trim($_POST['product_name'] ?? '');
+        $price = trim($_POST['product_price'] ?? '');
+        $quantity = intval($_POST['product_quantity'] ?? 1);
+        $files = $_FILES['product_images'] ?? null;
 
-            $uploadedImages[] = $uploadedUrl;
-
-        } catch (\Exception $e) {
-            echo json_encode([
-                'success' => false,
-                'message' => "Failed to upload {$fileName}: " . $e->getMessage()
-            ]);
+        $errors = [];
+        if (empty($name)) $errors[] = 'Product name is required.';
+        if (!is_numeric($price) || $price < 0) $errors[] = 'Price must be a valid number.';
+        if ($quantity < 1) $errors[] = 'Quantity must be at least 1.';
+        if (!$files || empty($files['name'][0])) $errors[] = 'At least one image is required.';
+        if ($errors) {
+            echo json_encode(['success' => false, 'message' => implode('<br>', $errors)]);
             exit;
         }
-    }
 
-    // Return success JSON
-    echo json_encode([
-        'success' => true,
-        'message' => 'Product successfully added with ' . count($uploadedImages) . ' image(s).',
-        'images' => $uploadedImages
-    ]);
-    exit;
-}
+        $uploadedImages = [];
+        foreach ($files['tmp_name'] as $index => $tmpName) {
+            $fileName = $files['name'][$index];
+            $fileType = $files['type'][$index];
 
+            if (!in_array($fileType, ['image/jpeg','image/png','image/jpg'])) {
+                echo json_encode(['success' => false, 'message' => "File {$fileName} must be JPG or PNG."]);
+                exit;
+            }
 
+            try {
+                $uploadedUrl = Product::createWithImage([
+                    'name' => $name,
+                    'price' => $price,
+                    'user_id' => $this->userId,
+                    'quantity' => $quantity
+                ], ['tmp_name' => $tmpName]);
 
+                $uploadedImages[] = $uploadedUrl;
 
-    public function editProduct()
-    {
-         $productId = isset($_GET['id']) && !empty($_GET['id']) ? (int)$_GET['id'] : null;
+            } catch (\Exception $e) {
+                echo json_encode(['success' => false, 'message' => "Failed to upload {$fileName}: " . $e->getMessage()]);
+                exit;
+            }
+        }
 
-         $product = Product :: findById($productId);
-     
-         $this->render('admin/edit-product.tpl', [
-            'product' => $product ?? null
+        echo json_encode([
+            'success' => true,
+            'message' => 'Product added with ' . count($uploadedImages) . ' image(s).',
+            'images' => $uploadedImages
         ]);
     }
 
     public function updateProduct()
     {
-    
-        $productId   = intval($_POST['id'] ?? 0);
+        $this->requireVendor();
+
+        $productId = intval($_POST['id'] ?? 0);
         $productName = trim($_POST['name'] ?? '');
         $productPrice = trim($_POST['price'] ?? '');
         $productQuantity = intval($_POST['quantity'] ?? 1);
-    
+
         $errors = [];
-    
         if (!$productId) $errors[] = 'Invalid product ID.';
         if (empty($productName)) $errors[] = 'Product name is required.';
-        if (!is_numeric($productPrice) || $productPrice < 0) $errors[] = 'Invalid product price.';
+        if (!is_numeric($productPrice) || $productPrice < 0) $errors[] = 'Invalid price.';
         if ($productQuantity < 1) $errors[] = 'Quantity must be at least 1.';
-    
+
         $product = Product::findById($productId);
-    
-        if (!$product) {
-            $_SESSION['errors'] = ['Product not found.'];
-            header('Location: admin/contents');
+        if (!$product || $product['user_id'] != $this->userId) {
+            echo json_encode(['success' => false, 'message' => 'Product not found or no permission.']);
             exit;
         }
-    
-        if ($product['user_id'] != $this->userId) {
-            $_SESSION['errors'] = ['You do not have permission to edit this product.'];
-            header('Location: admin/contents');
-            exit;
-        }
-    
+
         $success = Product::update($productId, [
             'name' => $productName,
             'price' => $productPrice,
             'quantity' => $productQuantity
         ]);
-    
-        if ($success) {
-            echo $_SESSION['success'] = 'Product updated successfully.';
-        } else {
-            echo $_SESSION['errors'] = ['Failed to update product.'];
-        }
 
-        
-
+        echo json_encode([
+            'success' => $success,
+            'message' => $success ? 'Product updated successfully.' : 'Failed to update product.'
+        ]);
     }
 
-
-
+    // =======================
+    // LOGOUT
+    // =======================
     public function logout()
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: ../login');
-            exit;
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start(); // Make sure session is started
         }
-
-        Auth::csrfCheck($_POST['csrf'] ?? null);
-
+    
+        // Unset all session variables
         $_SESSION = [];
+    
+        // Destroy the session cookie (important)
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(
+                session_name(), 
+                '', 
+                time() - 42000,
+                $params["path"], 
+                $params["domain"],
+                $params["secure"], 
+                $params["httponly"]
+            );
+        }
+    
+        // Destroy the session
         session_destroy();
-
-        header("Location: ../login");
+    
+        // Redirect to home page
+        header("Location: ../index"); // Use absolute path if possible
         exit;
     }
+    
+    // =======================
+    // HELPER FUNCTIONS
+    // =======================
 
+    private function isVendor(): bool
+    {
+        return isset($this->user['user_type']) && $this->user['user_type'] === 'vendor';
+    }
 
-
+    private function requireVendor()
+    {
+        if (!$this->isVendor()) {
+            header('Location: order-history'); // send non-vendors to orders page
+            exit;
+        }
+    }
 }

@@ -6,13 +6,16 @@ use App\Models\Product;
 use App\Models\Order;
 
 class CartController extends Controller {
-
+   
     public function index() {
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
         $userId = $_SESSION['user']['id'];
         $product = Order :: cart($userId);
         $this->view->assign('cart', $_SESSION['cart'] ?? []);
         $this->view->assign('product', $product ?? []);
-        $this->view->assign('csrf_token', $_SESSION['csrf']);
+        $this->view->assign('csrf_token', $_SESSION['csrf'] ?? '');
         $this->view->display('cart/index.tpl');
        
     }

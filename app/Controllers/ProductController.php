@@ -22,7 +22,9 @@ class ProductController extends Controller {
 
     // Show single product
     public function show() {
-
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
         $userId = $_SESSION['user']['id'] ?? null;
 
         if (!isset($_GET['id'])) {
@@ -42,17 +44,21 @@ class ProductController extends Controller {
         $this->render('products/show.tpl', [
             'product' => $product,
             'userId' =>$userId,
-            'csrf_token' => $_SESSION['csrf']
+            'csrf_token' => $_SESSION['csrf'] ?? ''
         ]);
     }
 
     // Add a new product with Cloudinary upload
     public function store() {
         try {
+
+            if (!isset($_SESSION['csrf'])) {
+                $_SESSION['csrf'] = bin2hex(random_bytes(32));
+            }
             // CSRF check
             if (
                 !isset($_POST['csrf']) ||
-                $_POST['csrf'] !== ($_SESSION['csrf'] ?? null)
+                $_POST['csrf'] !== ($_SESSION['csrf'] ?? '')
             ) {
                 throw new \Exception("Invalid CSRF token");
             }
