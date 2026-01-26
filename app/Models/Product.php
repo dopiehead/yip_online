@@ -41,7 +41,7 @@ class Product
             p.name AS name,
             p.price AS price,
             p.image AS image,
-            p.quantity_sold,
+            p.quantity_sold AS total,
             p.user_id AS vendor_id,
 
             br.reference_no,
@@ -81,7 +81,7 @@ class Product
                 p.name,
                 p.price,
                 p.image,
-                p.quantity_sold,
+                p.quantity_sold AS total,
                 p.user_id AS vendor_id,
     
                 o.user_id AS buyer_id,

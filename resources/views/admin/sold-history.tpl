@@ -8,7 +8,7 @@
         <img style='height:200px;width:250px;' class='img-fluid' src='{$product.image|default:"https://placehold.co/400"}'>
         <div class='d-flex flex-column flex-row p-2'>
           <span class='fw-bold text-capitalize'>{$product.name}</span>
-          <span class='text-danger text-capitalize'>{$product.price}</span>
+          <span class='text-danger text-capitalize'>{$product.price} ({$product.total})</span>
         </div>
       </div>
     {/foreach}

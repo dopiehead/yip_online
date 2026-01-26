@@ -23,10 +23,6 @@ class Controller
         $this->view->caching = false;
         $this->view->debugging = false;
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         // Assign user globally
         $this->view->assign('user', $_SESSION['user'] ?? null);
     }

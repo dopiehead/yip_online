@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 07:42:52
+/* Smarty version 5.7.0, created on 2026-01-26 16:38:31
   from 'file:admin/sold-history.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6975c97c46a836_63700876',
+  'unifunc' => 'content_697798877e90d3_68255189',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e529897db82e88d78d2ed9eabe84210da195699' => 
     array (
       0 => 'admin/sold-history.tpl',
-      1 => 1769326948,
+      1 => 1769445508,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6975c97c46a836_63700876 (\Smarty\Template $_smarty_tpl) {
+function content_697798877e90d3_68255189 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_8076226996975c97c456c79_43419915', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_2082432474697798877bf3a3_50401195', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_8076226996975c97c456c79_43419915 extends \Smarty\Runtime\Block
+class Block_2082432474697798877bf3a3_50401195 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
@@ -52,7 +52,8 @@ $foreach0DoElse = false;
           <span class='fw-bold text-capitalize'><?php echo $_smarty_tpl->getValue('product')['name'];?>
 </span>
           <span class='text-danger text-capitalize'><?php echo $_smarty_tpl->getValue('product')['price'];?>
-</span>
+ (<?php echo $_smarty_tpl->getValue('product')['total'];?>
+)</span>
         </div>
       </div>
     <?php
