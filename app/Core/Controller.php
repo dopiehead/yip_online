@@ -24,6 +24,10 @@ class Controller
         $this->view->debugging = false;
 
         // Assign user globally
+        if (session_status() === PHP_SESSION_NONE) {
+            // No session has started yet
+            session_start();
+        }
         $this->view->assign('user', $_SESSION['user'] ?? null);
     }
 

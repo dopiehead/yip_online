@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-26 20:08:09
+/* Smarty version 5.7.0, created on 2026-01-26 20:17:44
   from 'file:admin/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6977c9a99d1bd0_26402255',
+  'unifunc' => 'content_6977cbe83b2803_22938109',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1a3ce4e996977513c8f6b24398804eec8268a518' => 
     array (
       0 => 'admin/index.tpl',
-      1 => 1769458086,
+      1 => 1769458095,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6977c9a99d1bd0_26402255 (\Smarty\Template $_smarty_tpl) {
+function content_6977cbe83b2803_22938109 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_6650087916977c9a9998be4_16717364', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10543525176977cbe83750d9_06426060', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_6650087916977c9a9998be4_16717364 extends \Smarty\Runtime\Block
+class Block_10543525176977cbe83750d9_06426060 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
@@ -48,8 +48,8 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
             </div>
         <?php } else { ?>
     
-        <table style='overflow-x:hidden;' class="table table-bordered table-hover w-100">
-
+        <table style='overflow-x:auto;' class="table table-bordered table-hover w-100">
+        
             <thead class="table-light">
                 <tr>
                     <th>Product</th>

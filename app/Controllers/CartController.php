@@ -8,16 +8,31 @@ use App\Models\Order;
 class CartController extends Controller {
    
     public function index() {
+        // Start session if not started
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        // Generate CSRF token if not set
         if (!isset($_SESSION['csrf'])) {
             $_SESSION['csrf'] = bin2hex(random_bytes(32));
         }
-        $userId = $_SESSION['user']['id'];
-        $product = Order :: cart($userId);
-        $this->view->assign('cart', $_SESSION['cart'] ?? []);
+    
+        // Check if user is logged in
+        if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])) {
+            $userId = $_SESSION['user']['id'];
+            $product = Order::cart($userId);
+        } else {
+            $userId = null;
+            $product = [];
+        }
+    
+        // Assign variables to the view safely
         $this->view->assign('product', $product ?? []);
+        $this->view->assign('user', $_SESSION['user'] ?? []);
         $this->view->assign('csrf_token', $_SESSION['csrf'] ?? '');
+    
         $this->view->display('cart/index.tpl');
-       
     }
 
 

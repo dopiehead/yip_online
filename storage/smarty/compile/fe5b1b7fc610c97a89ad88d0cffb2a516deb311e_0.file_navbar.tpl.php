@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-26 12:45:55
+/* Smarty version 5.7.0, created on 2026-01-26 20:19:06
   from 'file:/Applications/MAMP/htdocs/yip_online/resources/views/layouts/../partials/navbar.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_697762031dd726_34285477',
+  'unifunc' => 'content_6977cc3ab9ddf2_11671466',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe5b1b7fc610c97a89ad88d0cffb2a516deb311e' => 
     array (
       0 => '/Applications/MAMP/htdocs/yip_online/resources/views/layouts/../partials/navbar.tpl',
-      1 => 1769431551,
+      1 => 1769458740,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_697762031dd726_34285477 (\Smarty\Template $_smarty_tpl) {
+function content_6977cc3ab9ddf2_11671466 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/partials';
 ?><nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
