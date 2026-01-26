@@ -31,11 +31,6 @@ return [
         '/admin/logout' => ['AdminController', 'logout'],
     ],
 
-    'inventory'=>[
-        '/vendor/inventory' => ['VendorInventoryController', 'index'],
-
-    ],
-
     'cart' => [
         '/cart' => ['CartController', 'index'],
         '/cart/add' => ['CartController', 'add'],

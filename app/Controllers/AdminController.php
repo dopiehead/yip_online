@@ -119,6 +119,7 @@ class AdminController extends Controller
         $this->requireVendor();
 
         $productId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+        
         $product = Product::findById($productId);
 
         $this->render('admin/edit-product.tpl', [
