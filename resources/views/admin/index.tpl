@@ -12,7 +12,7 @@
             </div>
         {else}
     
-        <table class="table table-bordered table-hover">
+        <table  class="table table-bordered table-hover w-100 overflow-x-auto">
             <thead class="table-light">
                 <tr>
                     <th>Product</th>
