@@ -12,7 +12,8 @@
             </div>
         {else}
     
-        <table  class="table table-bordered table-hover w-100 overflow-x-auto">
+        <table style='overflow-x:auto;' class="table table-bordered table-hover w-100">
+        
             <thead class="table-light">
                 <tr>
                     <th>Product</th>
