@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-26 02:34:16
+/* Smarty version 5.7.0, created on 2026-01-26 20:25:40
   from 'file:admin/components/topbar.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6976d2a83cb7b8_57784840',
+  'unifunc' => 'content_6977cdc4165fb6_96366032',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fd8d88c26e82f3bd97bc84766b26ac68b43ef3a6' => 
     array (
       0 => 'admin/components/topbar.tpl',
-      1 => 1769394852,
+      1 => 1769459127,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6976d2a83cb7b8_57784840 (\Smarty\Template $_smarty_tpl) {
+function content_6977cdc4165fb6_96366032 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin/components';
 ?>
 
 <div class="top-bar">
 <?php if ((true && ($_smarty_tpl->hasVariable('user') && null !== ($_smarty_tpl->getValue('user') ?? null))) && $_smarty_tpl->getValue('user')) {?>
             <div>
-                <h1 style="margin: 0; font-size: 24px; font-weight: 600; color: #1f2937;">Hello, <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('user')['user_name'], ENT_QUOTES, 'UTF-8', true);?>
+                <h1 style="margin: 0; font-size: 24px; font-weight: 600; color: #1f2937;text-transform:capitalize;">Hello, <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('user')['user_name'], ENT_QUOTES, 'UTF-8', true);?>
 </h1>
             </div>
             <div class="user-profile">

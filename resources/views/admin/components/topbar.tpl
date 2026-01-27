@@ -3,7 +3,7 @@
 <div class="top-bar">
 {if isset($user) && $user}
             <div>
-                <h1 style="margin: 0; font-size: 24px; font-weight: 600; color: #1f2937;">Hello, {$user.user_name|escape}</h1>
+                <h1 style="margin: 0; font-size: 24px; font-weight: 600; color: #1f2937;text-transform:capitalize;">Hello, {$user.user_name|escape}</h1>
             </div>
             <div class="user-profile">
                 <span style="color: #6b7280; font-size: 14px;">{$user.created_at|escape}</span>
