@@ -11,7 +11,7 @@ class NavBarController extends Controller
 
         // Safely get user ID (null if not logged in)
         $userId = $_SESSION['user']['id'] ?? null;   
-        var_dump($_SESSION['user']); exit;
+         exit;
         $this->render('partials/navbar.tpl', [
             'userId' => $userId,
             'isLoggedIn' => !empty($userId)
