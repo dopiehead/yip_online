@@ -10,4 +10,12 @@ class Validator {
             }
         }
     }
+
+    public static function type($field){
+        foreach ($fields as $field) {
+            if (!is_numeric($_POST['price'])) {
+                throw new \Exception("Price must be a valid number");
+            }
+        }
+    }
 }

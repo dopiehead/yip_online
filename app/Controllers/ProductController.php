@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Cache;
+use App\Core\Validator;
 use App\Models\User;
 use App\Models\Product;
 
@@ -63,11 +64,19 @@ class ProductController extends Controller {
                 throw new \Exception("Invalid CSRF token");
             }
 
+            Validator::required($_POST, ['name', 'price']);
+
             // Validation
-            if (empty($_POST['name']) || empty($_POST['price']) || empty($_FILES['image']['tmp_name'])) {
+            if ( empty($_FILES['image']['tmp_name'])) {
                 throw new \Exception("All fields are required");
             }
 
+            if (strlen($_POST['name']) > 15) {
+                throw new \Exception("Name must not exceed 15 characters");
+            }
+
+            Validator::type($_POST['price']);
+             
             // Call Model method for upload + save
             Product::createWithImage($_POST, $_FILES['image']);
 

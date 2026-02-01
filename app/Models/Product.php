@@ -32,41 +32,69 @@ class Product
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    // Fetch products bought by a user (not sold by them and unsold)
+    public static function productsBoughtByMe(int $buyerId): array
+{
+    $sql = "SELECT 
+    p.id,
+    p.name AS name,
+    p.price AS price,
+    p.image AS image, 
+    p.quantity_sold AS total,
+    p.user_id AS vendor_id
+
+FROM orders o
+JOIN products p 
+    ON p.id = o.itemId
+
+WHERE o.user_id = :buyer_id
+  AND o.status = 1
+
+ORDER BY o.id DESC;
+";
+
+    $stmt = Database::connect()->prepare($sql);
+
+    // ✅ Correct named binding
+    $stmt->bindValue(':buyer_id', $buyerId, \PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+}
+   
+
+    // Fetch products sold by a user
     public static function productsSoldByMe(int $vendorId): array
     {
-        $sql = "
-            SELECT 
-                p.id,
-                p.name,
-                p.price,
-                p.image,
-                p.quantity_sold AS total,
-                p.user_id AS vendor_id,
-                br.reference_no,
-                br.client_id,
-                br.client_name,
-                br.amount,
-                br.date_added
-            FROM orders o
-            JOIN products p ON p.id = o.itemId
-            JOIN buyer_receipt br ON br.id = (
-                SELECT id
-                FROM buyer_receipt
-                ORDER BY date_added DESC
-                LIMIT 1
-            )
-            WHERE o.status = 1
-              AND p.user_id = :vendor_id
-            ORDER BY br.date_added DESC
-        ";
+        $sql = "SELECT 
+            p.id,
+            p.name,
+            p.price,
+            p.image,
+            p.quantity_sold AS total,
+            p.user_id AS vendor_id,
+            br.reference_no,
+            br.client_id,
+            br.client_name,
+            br.amount,
+            br.date_added
+        FROM orders o
+        JOIN products p ON p.id = o.itemId
+        JOIN buyer_receipt br ON br.id = (
+            SELECT id
+            FROM buyer_receipt
+            ORDER BY date_added DESC
+            LIMIT 1
+        )
+        WHERE o.status = 1
+          AND p.user_id = :vendor_id
+        ORDER BY br.date_added DESC";
     
         $stmt = Database::connect()->prepare($sql);
-        $stmt->bindValue(':vendor_id', $vendorId, \PDO::PARAM_INT);
+        $stmt->bindValue(':vendor_id', $vendorId, PDO::PARAM_INT);
         $stmt->execute();
     
-        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    
-        return $result ?: []; // ✅ GUARANTEED array
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC); // ✅ ALWAYS array
     }
     
 
