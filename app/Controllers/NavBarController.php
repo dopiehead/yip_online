@@ -13,7 +13,7 @@ class NavBarController extends Controller
         $userId = $_SESSION['user']['id'] ?? null;   
          exit;
         $this->render('partials/navbar.tpl', [
-            'userId' => $userId,
+            'userId' => $userId ?? 0,
             'isLoggedIn' => !empty($userId)
         ]);
     }

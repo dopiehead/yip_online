@@ -66,7 +66,7 @@ class CartController extends Controller {
                 exit;
             }
     
-            $itemId = (int) $data['product_id'];
+            $itemId = (int) $data['product_id'] ?? 0;
             $quantity = isset($data['noofitem']) ? (int)$data['noofitem'] : 1; // default 1
             $user_id = (int) ($data['buyer_id'] ?? 0);
             $status = 0;

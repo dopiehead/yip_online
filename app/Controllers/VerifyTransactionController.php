@@ -3,9 +3,10 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\Product;
-use App\Models\Order;
+use App\Services\TransactionService;
 use App\Models\User;
+use App\Models\Order;
+use Exception;
 
 class VerifyTransactionController extends Controller
 {
@@ -31,6 +32,7 @@ class VerifyTransactionController extends Controller
         }
 
         $user = User::find($userId);
+
         if (!$user) {
             $this->view->assign('error', 'User not found.');
             $this->view->display('cart/verify-transaction.tpl');
@@ -43,31 +45,22 @@ class VerifyTransactionController extends Controller
             return;
         }
 
+        $cartItems = Order::cart($userId) ?? [];
+
         // Payment confirmed in test mode ✅
-        $cartItems = Order::cart($userId) ?? []; // Get user's cart items
+         try {
+            $transactionService = new TransactionService();
+            $success = $transactionService->process( $userId,  $reference,  $amount,  $user); 
+            if (!$success) {
+                throw new \Exception("Transaction not succesful");
+            }
+    
+         } 
 
-        foreach ($cartItems as $item) {
-            // mark item paid
-            Order::markPaid($item['id']); 
+         catch(\Throwable $e){
+            throw $e;
 
-       // Increase sold quantity
-            Product::addToSoldQuantity( $item['product_id'], $item['total']);
-
-// Reduce available stock
-         Product::removeFromQuantity($item['product_id'], $item['total']);
-
-// Fetch updated product quantity
-         $product = Product::findById($item['product_id']);
-
-// If stock is exhausted, mark as sold out
-         if ($product && (int)$product['quantity'] <= 0) {
-          Product::changeToSold($item['product_id']);
          }
-        }
-        
-        // Save receipt
-        $dateAdded = date('Y-m-d H:i:s');
-        Order::saveReceipt($reference, $userId, $user['user_name'], $amount, $dateAdded);
 
         // Compute totals for display
         $subtotal = 0;
@@ -99,3 +92,4 @@ class VerifyTransactionController extends Controller
         $this->view->display('cart/verify-transaction.tpl');
     }
 }
+

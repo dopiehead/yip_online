@@ -10,6 +10,10 @@
           <span class='fw-bold text-capitalize'>{$product.name}</span>
           <span class='text-danger text-capitalize'>{$product.price} ( {$product.total} )</span>
         </div>
+        <div class='mt-2 text-secondary fw-bold d-flex justify-content-end px-3 pb-2'>
+            
+            <span><i class='fa fa-dollar-sign'></i>{$totalPrice}</span>
+        </div>
       </div>
     {/foreach}
   </div>

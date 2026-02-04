@@ -74,8 +74,14 @@ class AdminController extends Controller
     {
         // All logged-in users can see order history
         $products = Product::productsBoughtByMe($this->userId) ?: [];
+        $totalPrice = 0;
+
+        foreach ($products as $product) {
+       $totalPrice += $product['total'] * $product['price'];
+       }
         $this->render('admin/order-history.tpl', [
-            'products' => $products
+            'products' => $products,
+            'totalPrice' => $totalPrice
         ]);
     }
 
