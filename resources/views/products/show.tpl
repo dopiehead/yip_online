@@ -8,7 +8,7 @@
 
     <div class="col-md-6">
         <h2>{$product.name}</h2>
-        <h4 class="text-primary mb-3">$ {$product.price}</h4>
+        <h4 class="text-primary mb-3"><span class=' fas fa-naira-sign'></span> {$product.price}</h4>
         {if $userId}
            <input type='hidden' name="buyer_id" id="buyer_id" value="{$userId}">
         {/if}

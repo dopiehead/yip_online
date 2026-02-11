@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-26 07:40:00
+/* Smarty version 5.7.0, created on 2026-02-11 13:13:11
   from 'file:cart/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_69771a502645d9_31251006',
+  'unifunc' => 'content_698c8067a67933_47359180',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f48ce25d19ab7ab270ef4b2c194dbbdb9ff315e' => 
     array (
       0 => 'cart/index.tpl',
-      1 => 1769391399,
+      1 => 1770815587,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_69771a502645d9_31251006 (\Smarty\Template $_smarty_tpl) {
+function content_698c8067a67933_47359180 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_102062788269771a5020f202_22208645', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_299691169698c8067a24c20_13626752', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_102062788269771a5020f202_22208645 extends \Smarty\Runtime\Block
+class Block_299691169698c8067a24c20_13626752 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
@@ -69,9 +69,9 @@ $foreach0DoElse = false;
 </td>
             <td><?php echo htmlspecialchars((string)$_smarty_tpl->getValue('item')['total'], ENT_QUOTES, 'UTF-8', true);?>
 </td>
-            <td>$ <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('item')['price'], ENT_QUOTES, 'UTF-8', true);?>
+            <td><span class='fas fa-naira-sign'></span> <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('item')['price'], ENT_QUOTES, 'UTF-8', true);?>
 </td>
-            <td>$ <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('itemTotal'), ENT_QUOTES, 'UTF-8', true);?>
+            <td><span class='fas fa-naira-sign'></span> <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('itemTotal'), ENT_QUOTES, 'UTF-8', true);?>
 </td>
             <td>
                 <button class="btn btn-sm btn-danger remove-item" data-id="<?php echo htmlspecialchars((string)$_smarty_tpl->getValue('item')['id'], ENT_QUOTES, 'UTF-8', true);?>
@@ -89,7 +89,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 </table>
 
 <div class="d-flex justify-content-between mt-3">
-    <h4>Total: $ <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('grandTotal'), ENT_QUOTES, 'UTF-8', true);?>
+    <h4>Total: <span class='fas fa-naira-sign'></span> <?php echo htmlspecialchars((string)$_smarty_tpl->getValue('grandTotal'), ENT_QUOTES, 'UTF-8', true);?>
 </h4>
     <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
 </div>

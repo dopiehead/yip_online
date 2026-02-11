@@ -47,19 +47,32 @@ class User {
     }
     
 
-    public static function update($id, $data) {
-        $fields = [];
-        $values = [];
+    public static function update(int $id, array $data): bool
+{
+    if (empty($data)) {
+        return false;
+    }
 
-        foreach ($data as $key => $value) {
-            if ($key === 'password') {
-                $value = password_hash($value, PASSWORD_DEFAULT);
-            }
-            $fields[] = "$key=?";
-            $values[] = $value;
+    $db = Database::connect();
+    $fields = [];
+    $values = [];
+
+    foreach ($data as $key => $value) {
+        if ($key === 'password') {
+            $value = password_hash($value, PASSWORD_DEFAULT);
         }
 
-
+        $fields[] = "$key = ?";
+        $values[] = $value;
     }
+
+    $values[] = $id;
+
+    $sql = "UPDATE users SET " . implode(", ", $fields) . " WHERE id = ?";
+
+    $stmt = $db->prepare($sql);
+    return $stmt->execute($values);
+}
+
 
 }

@@ -28,13 +28,13 @@
       <div class="row g-3 mb-3">
         <!-- Min Price -->
         <div class="col-md-6 col-6">
-          <label for="min_price" class="form-label fw-bold">From <span class='text-danger'>$</span></label>
+          <label for="min_price" class="form-label fw-bold">From <span class='text-danger fas fa-naira-sign'></span></label>
           <input type="number" class="form-control" id="min_price" name="minprice" min="0" value="{$min_price|escape}">
         </div>
 
         <!-- Max Price -->
         <div class="col-md-6 col-6">
-          <label for="max_price" class="form-label fw-bold">To <span class='text-danger'>$</span></label>
+          <label for="max_price" class="form-label fw-bold">To <span class='text-danger fas fa-naira-sign'></span></label>
           <input type="number"  class="form-control" id="max_price" name="maxprice" max="{$max_price|escape}"  value='{$max_price|escape}'>
         </div>
 

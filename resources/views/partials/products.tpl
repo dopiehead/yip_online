@@ -1,6 +1,6 @@
 
 <div class='text-end my-2'>
-      <span class='fw-bold text-secondary'>{$totalRecord}</span> Product(s) found
+      <span class='fw-bold text-secondary'>{$totalRecord}</span> Product(s) 
 </div>
 
 <div class="row g-4">
@@ -23,7 +23,7 @@
                 </h5>
 
                 <p class="text-danger fw-bold fs-5 mb-3">
-                    $ {$product.price}
+                    <i class='fas fa-naira-sign'></i> {$product.price}
                 </p>
 
                 <a href="product?id={$product.id}" 

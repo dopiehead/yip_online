@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 12:42:15
+/* Smarty version 5.7.0, created on 2026-02-11 13:15:55
   from 'file:partials/products.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698c792784c9c7_84699265',
+  'unifunc' => 'content_698c810b23da44_66607971',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8367c51641475ecc6a17a82750b6cc231d67732' => 
     array (
       0 => 'partials/products.tpl',
-      1 => 1770813719,
+      1 => 1770815748,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,15 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698c792784c9c7_84699265 (\Smarty\Template $_smarty_tpl) {
+function content_698c810b23da44_66607971 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/partials';
 ?>
 <div class='text-end my-2'>
       <span class='fw-bold text-secondary'><?php echo $_smarty_tpl->getValue('totalRecord');?>
-</span> Product(s) found
+</span> Product(s) 
 </div>
 
-<div class="row g-4" data-aos="fade-up">
+<div class="row g-4">
 
 <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('products'), 'product');
@@ -56,7 +56,7 @@ $foreach0DoElse = false;
                 </h5>
 
                 <p class="text-danger fw-bold fs-5 mb-3">
-                    $ <?php echo $_smarty_tpl->getValue('product')['price'];?>
+                    <i class='fas fa-naira-sign'></i> <?php echo $_smarty_tpl->getValue('product')['price'];?>
 
                 </p>
 

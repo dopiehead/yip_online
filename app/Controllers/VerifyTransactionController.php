@@ -19,10 +19,10 @@ class VerifyTransactionController extends Controller
             return;
         }
 
-        $status    = htmlspecialchars($_GET['status']);
-        $reference = htmlspecialchars($_GET['reference']);
-        $amount    = (float)$_GET['amount'];
-        $userId    = (int)$_GET['id'];
+        $status    = htmlspecialchars($_GET['status'] ?? '');
+        $reference = htmlspecialchars($_GET['reference'] ?? '');
+        $amount    = (float)$_GET['amount'] ?? 0;
+        $userId    = (int)$_GET['id'] ?? 0;
 
         // Load user
         if (!isset($_SESSION['user']) || $_SESSION['user']['id'] !== $userId) {

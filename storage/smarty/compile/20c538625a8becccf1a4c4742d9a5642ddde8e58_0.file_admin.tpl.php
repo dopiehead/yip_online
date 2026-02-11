@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 07:32:23
+/* Smarty version 5.7.0, created on 2026-02-11 19:48:50
   from 'file:layouts/admin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6975c7078d3d71_12580305',
+  'unifunc' => 'content_698cdd22401730_74440969',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '20c538625a8becccf1a4c4742d9a5642ddde8e58' => 
     array (
       0 => 'layouts/admin.tpl',
-      1 => 1769326331,
+      1 => 1770839302,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:admin/components/topbar.tpl' => 1,
   ),
 ))) {
-function content_6975c7078d3d71_12580305 (\Smarty\Template $_smarty_tpl) {
+function content_698cdd22401730_74440969 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/layouts';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -40,6 +40,10 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
   <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"><?php echo '</script'; ?>
 >
+  <?php echo '<script'; ?>
+ src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"><?php echo '</script'; ?>
+>
+
 </head>
 <body>
 
@@ -52,7 +56,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
 
        <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_5987776006975c7078c4e49_28264152', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1365422501698cdd223fc956_98149416', "content");
 ?>
 
 
@@ -77,7 +81,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_5987776006975
 </html>
 <?php }
 /* {block "content"} */
-class Block_5987776006975c7078c4e49_28264152 extends \Smarty\Runtime\Block
+class Block_1365422501698cdd223fc956_98149416 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/layouts';

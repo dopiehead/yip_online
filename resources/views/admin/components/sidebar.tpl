@@ -17,7 +17,7 @@
     {/if}
         <a class="nav-link" href="order-history"><i class="fas fa-history"></i> <span class='link-label'>Order History</span></a>
         <!-- Settings toggle link -->
-
+        <a class="nav-link" href="user-settings"><i class="fas fa-gear"></i> <span class='link-label'>Account settings</span></a>
     </nav>
 
     <div class='logout' style="padding: 24px;">

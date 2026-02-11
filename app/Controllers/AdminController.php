@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\Auth;
 use App\Models\Order;
+use App\Models\User;
 use App\Models\Product;
 
 class AdminController extends Controller
@@ -69,6 +70,34 @@ class AdminController extends Controller
             'vendor' => $this->userId
         ]);
     }
+
+
+
+    public function userSettings()
+    {
+         
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
+        $this->userId = $this->user['id'] ?? null;
+    
+        if (!$this->userId) {
+            die('User not found');
+        }
+    
+        $userDetails = User::find($this->userId);
+    
+        if (!$userDetails) {
+            die('Account data missing');
+        }
+    
+        $this->render('admin/user-settings.tpl', [
+            'userDetails' => $userDetails,
+            'csrf_token'  => $_SESSION['csrf'] 
+        ]);
+    }
+    
+
 
     public function orders()
     {
@@ -253,6 +282,37 @@ class AdminController extends Controller
             'message' => $success ? 'Product updated successfully.' : 'Failed to update product.'
         ]);
     }
+    public function userUpdate()
+{
+    header('Content-Type: application/json');
+
+    $id   = intval($_POST['user_id'] ?? 0);
+    $name = trim($_POST['name'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+
+    if(!$id || empty($name)){
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Invalid input'
+        ]);
+        return;
+    }
+
+    $updated = User::update($id, ['user_name' => $name]);
+
+    if($updated){
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Profile updated successfully'
+        ]);
+    } else {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Update failed'
+        ]);
+    }
+}
+
 
     // =======================
     // LOGOUT

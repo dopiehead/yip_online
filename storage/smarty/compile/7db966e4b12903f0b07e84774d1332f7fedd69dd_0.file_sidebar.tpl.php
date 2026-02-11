@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-26 09:36:07
+/* Smarty version 5.7.0, created on 2026-02-11 15:55:53
   from 'file:admin/components/sidebar.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_69773587c9bc42_29131623',
+  'unifunc' => 'content_698ca6896340f6_36013641',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7db966e4b12903f0b07e84774d1332f7fedd69dd' => 
     array (
       0 => 'admin/components/sidebar.tpl',
-      1 => 1769419939,
+      1 => 1770824760,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_69773587c9bc42_29131623 (\Smarty\Template $_smarty_tpl) {
+function content_698ca6896340f6_36013641 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin/components';
 ?>
 
@@ -41,7 +41,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
     <?php }?>
         <a class="nav-link" href="order-history"><i class="fas fa-history"></i> <span class='link-label'>Order History</span></a>
         <!-- Settings toggle link -->
-
+        <a class="nav-link" href="user-settings"><i class="fas fa-gear"></i> <span class='link-label'>Account settings</span></a>
     </nav>
 
     <div class='logout' style="padding: 24px;">

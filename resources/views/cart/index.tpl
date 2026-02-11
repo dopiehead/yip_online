@@ -24,8 +24,8 @@
         <tr>
             <td>{$item.name|escape}</td>
             <td>{$item.total|escape}</td>
-            <td>$ {$item.price|escape}</td>
-            <td>$ {$itemTotal|escape}</td>
+            <td><span class='fas fa-naira-sign'></span> {$item.price|escape}</td>
+            <td><span class='fas fa-naira-sign'></span> {$itemTotal|escape}</td>
             <td>
                 <button class="btn btn-sm btn-danger remove-item" data-id="{$item.id|escape}">
                     ✕
@@ -38,7 +38,7 @@
 </table>
 
 <div class="d-flex justify-content-between mt-3">
-    <h4>Total: $ {$grandTotal|escape}</h4>
+    <h4>Total: <span class='fas fa-naira-sign'></span> {$grandTotal|escape}</h4>
     <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
 </div>
 {/if}
