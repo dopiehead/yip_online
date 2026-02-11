@@ -1,72 +1,95 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-24 21:09:06
+/* Smarty version 5.7.0, created on 2026-02-11 03:39:31
   from 'file:products/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_697534f2206355_44965134',
+  'unifunc' => 'content_698bf9f30411c0_38828518',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af3edb0f9020d057e30111e2930afba65824db8f' => 
     array (
       0 => 'products/index.tpl',
-      1 => 1769288941,
+      1 => 1770781167,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:partials/filter-form.tpl' => 1,
   ),
 ))) {
-function content_697534f2206355_44965134 (\Smarty\Template $_smarty_tpl) {
+function content_698bf9f30411c0_38828518 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_148091198697534f21e79a2_43402851', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1117483971698bf9f30331d0_48092088', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_148091198697534f21e79a2_43402851 extends \Smarty\Runtime\Block
+class Block_1117483971698bf9f30331d0_48092088 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
 ?>
 
-<h1 class="mb-4">Products</h1>
 
-<div class="row">
-  <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('products'), 'product');
-$foreach0DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('product')->value) {
-$foreach0DoElse = false;
-?>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img src="<?php echo $_smarty_tpl->getValue('product')['image'];?>
-" class="card-img-top" alt="<?php echo $_smarty_tpl->getValue('product')['name'];?>
-">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title"><?php echo $_smarty_tpl->getValue('product')['name'];?>
-</h5>
-          <p class="card-text">$ <?php echo $_smarty_tpl->getValue('product')['price'];?>
-</p>
-          <a href="product?id=<?php echo $_smarty_tpl->getValue('product')['id'];?>
-" class="btn btn-primary mt-auto">View</a>
-        </div>
-      </div>
+<div class="container py-4">
+
+    <!-- Page Title -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Products</h1>
     </div>
-  <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+
+    <!-- Search Bar -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-10">
+                    <input 
+                        type="search" 
+                        name="q" 
+                        id="q" 
+                        class="form-control form-control-lg" 
+                        placeholder="Search for anything..."
+                    >
+                </div>
+                <div class="col-md-2 text-md-end">
+                    <button class="btn btn-outline-danger w-100"  onclick="openFilter()" id="btn-filter">
+                        <i class="fa fa-sliders-h me-2"></i> Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div id="results">
+         <div class='w-100 text-center'><span style='width:200px; height:200px;' class='spinner-border text-secondary fs-3 mt-3'></span> </div>
+    </div>
+
+    <div class='text-center p-3 mt-5'>
+     
+    <span class='text-secondary fw-bold fs-5'>Powered by DIGITA-X</span>
+
+    </div>
+   
 </div>
+
+<?php $_smarty_tpl->renderSubTemplate("file:partials/filter-form.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
+
+<?php echo '<script'; ?>
+ src='js/filter.js'><?php echo '</script'; ?>
+>
+
 <?php
 }
 }

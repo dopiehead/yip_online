@@ -169,6 +169,7 @@ class AdminController extends Controller
 
         $name = trim($_POST['product_name'] ?? '');
         $price = trim($_POST['product_price'] ?? '');
+        $category = intval($_POST['product_category'] ?? 1);
         $quantity = intval($_POST['product_quantity'] ?? 1);
         $files = $_FILES['product_images'] ?? null;
 
@@ -197,6 +198,7 @@ class AdminController extends Controller
                     'name' => $name,
                     'price' => $price,
                     'user_id' => $this->userId,
+                    'category' =>$category,
                     'quantity' => $quantity
                 ], ['tmp_name' => $tmpName]);
 

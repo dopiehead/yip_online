@@ -4,6 +4,8 @@ return [
     'public' => [
         '/index' => ['ProductController', 'index'],
         '/product' => ['ProductController', 'show'],
+        '/filter' => ['ProductController', 'filter'],
+        '/search-products' => ['ProductController','filterProduct'],
         '/api/products' => ['Api\ProductApiController', 'index'],
     ],
 

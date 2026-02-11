@@ -22,9 +22,19 @@
                   <input type="number" name="product_price" class="form-control" required>
                 </div>
 
+
+                <div class="mb-3">
+                <label class="form-label">Product Category</label>
+                <select type="text" name="product_category" class="form-control" required>
+                  <option value='electronics'>Electronics</option>
+                  <option value='accessories'>Accessories</option>
+                </select>
+              </div>
+
+
                 <div class="mb-3">
                   <label class="form-label">Quantity</label>
-                  <input type="number" name="product_quantity" class="form-control" required>
+                  <input type="number" min="1" name="product_quantity" class="form-control" required>
                 </div>
 
               </div>
