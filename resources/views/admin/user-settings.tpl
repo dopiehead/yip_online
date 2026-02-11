@@ -2,12 +2,8 @@
 
 {block name="content"}
 
-    <style>
-    #popupOverlay{
-       backdrop-filter: blur(2px); 
-    }
+    <link rel="stylesheet" href="../css/user-settings.css"/>
 
-</style>
 
 <div class="container py-4">
 

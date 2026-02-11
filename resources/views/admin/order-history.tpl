@@ -1,6 +1,10 @@
 {extends file="layouts/admin.tpl"}
 
 {block name="content"}
+
+  <link rel="stylesheet" href="../css/order-history.css"/>
+
+
     <div class="container-fluid mt-3">
     <div class="form-container d-flex justify-content-md-start justify-content-between align-items-center gap-4 flex-md-row flex-column">
     {foreach from=$products item=product}

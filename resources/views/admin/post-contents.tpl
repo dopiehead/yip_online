@@ -1,6 +1,10 @@
 {extends file="layouts/admin.tpl"}
 
+
 {block name="content"}
+  
+  <link rel="stylesheet" href="../css/post-contents.css"/>
+
 
     <div class="container-fluid mt-3">
       <div class="form-container">

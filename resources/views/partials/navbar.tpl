@@ -9,10 +9,10 @@
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index">Products</a></li>
+        <li class="nav-item product-link"><a class="nav-link" href="index">Products</a></li>
         {if isset($user)} 
-        <li class="nav-item"><a class="nav-link" href="cart">Cart<span style='font-size:12px' class='numbering  ms-1 pe-1 rounded rounded-circle text-white {if $mycart > 0} bg-danger {/if}'> {if $mycart > 0 } {$mycart}  {/if}</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="admin/index"> Profile</a></li>
+            <li class="nav-item cart-link"><a class="nav-link" href="cart">Cart<span style='font-size:12px' class='numbering  ms-1 pe-1 rounded rounded-circle text-white {if $mycart > 0} bg-danger {/if}'> {if $mycart > 0 } {$mycart}  {/if}</span></a></li>
+            <li class="nav-item "><a class="nav-link" href="admin/index"> Profile</a></li>
             <li class="nav-item"><a class="nav-link" href="admin/logout">Logout</a></li>
         {else}
             <li class="nav-item"><a class="nav-link" href="login">Login</a></li>

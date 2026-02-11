@@ -2,6 +2,8 @@
 
 {block name="content"}
 
+    <link rel="stylesheet" href="../css/dashboard.css"/>
+
     <div class="container-fluid">
 
         <h4 class="mb-3">📦 My Inventory</h4>

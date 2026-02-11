@@ -10,14 +10,14 @@
 
     <nav class="nav flex-column">
     {if isset($user) && $user.user_type == 'vendor'}
-        <a class="nav-link" href="index"><i class="fas fa-home"></i> <span class='link-label'>Home</span></a>
-        <a class="nav-link" href="post-contents"><i class="fas fa-shopping-cart"></i> <span class='link-label'>Post Ad</span></a>
-        <a class="nav-link" href="contents"><i class="fas fa-book"></i> <span class='link-label'>Contents</span></a>
-        <a class="nav-link" href="sold-history"><i class="fas fa-clock"></i> <span class='link-label'>Sold History</span></a>
+        <a class="nav-link dashboard" href="index"><i class="fas fa-home"></i> <span class='link-label'>Dashboard</span></a>
+        <a class="nav-link post-contents" href="post-contents"><i class="fas fa-shopping-cart"></i> <span class='link-label'>Post Ad</span></a>
+        <a class="nav-link my-contents" href="contents"><i class="fas fa-book"></i> <span class='link-label'>Contents</span></a>
+        <a class="nav-link sold-history" href="sold-history"><i class="fas fa-clock"></i> <span class='link-label'>Sold History</span></a>
     {/if}
-        <a class="nav-link" href="order-history"><i class="fas fa-history"></i> <span class='link-label'>Order History</span></a>
+        <a class="nav-link order-history" href="order-history"><i class="fas fa-history"></i> <span class='link-label'>Order History</span></a>
         <!-- Settings toggle link -->
-        <a class="nav-link" href="user-settings"><i class="fas fa-gear"></i> <span class='link-label'>Account settings</span></a>
+        <a class="nav-link user-settings" href="user-settings"><i class="fas fa-gear"></i> <span class='link-label'>Account settings</span></a>
     </nav>
 
     <div class='logout' style="padding: 24px;">

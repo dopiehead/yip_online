@@ -2,6 +2,12 @@
 
 {block name="content"}
 
+<style>
+.product-link{
+    background-color:rgba(48, 151, 255, 0.758) !important;
+}
+</style>
+
 <div class="container py-4">
 
     <!-- Page Title -->

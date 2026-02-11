@@ -1,6 +1,13 @@
 {extends file="layouts/main.tpl"}
 
 {block name="content"}
+    <style>
+    .cart-link{
+        background-color:rgba(48, 151, 255, 0.758) !important;
+    }
+    </style>
+
+
 <h2 class="mb-4">Shopping Cart</h2>
 
 {if empty($product)}

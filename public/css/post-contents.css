@@ -112,6 +112,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
     -moz-appearance: textfield;
+} */
+
+.post-contents{
+     
+        background: #1a202c !important;
+        color: #fff;
+    
 }

@@ -1,6 +1,9 @@
 {extends file="layouts/admin.tpl"}
 
 {block name="content"}
+
+  <link rel="stylesheet" href="../css/contents.css"/>
+
     <div class="container-fluid mt-3">
       <div class="form-container d-flex flex-wrap justify-content-start gap-3">
         {* Check if products exist *}

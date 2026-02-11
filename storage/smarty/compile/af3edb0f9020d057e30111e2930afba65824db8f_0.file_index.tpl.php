@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 04:07:06
+/* Smarty version 5.7.0, created on 2026-02-11 21:34:59
   from 'file:products/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698c006adc5a73_27319903',
+  'unifunc' => 'content_698cf60380cb11_99181065',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af3edb0f9020d057e30111e2930afba65824db8f' => 
     array (
       0 => 'products/index.tpl',
-      1 => 1770782815,
+      1 => 1770845696,
       2 => 'file',
     ),
   ),
@@ -21,25 +21,31 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/filter-form.tpl' => 1,
   ),
 ))) {
-function content_698c006adc5a73_27319903 (\Smarty\Template $_smarty_tpl) {
+function content_698cf60380cb11_99181065 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_806622636698c006adb80e3_03870146', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_760388795698cf6037f92f9_91521765', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_806622636698c006adb80e3_03870146 extends \Smarty\Runtime\Block
+class Block_760388795698cf6037f92f9_91521765 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
 ?>
 
+
+<style>
+.product-link{
+    background-color:rgba(48, 151, 255, 0.758) !important;
+}
+</style>
 
 <div class="container py-4">
 

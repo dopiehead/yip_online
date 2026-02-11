@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 13:13:11
+/* Smarty version 5.7.0, created on 2026-02-11 21:52:26
   from 'file:cart/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698c8067a67933_47359180',
+  'unifunc' => 'content_698cfa1a690e56_00942676',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f48ce25d19ab7ab270ef4b2c194dbbdb9ff315e' => 
     array (
       0 => 'cart/index.tpl',
-      1 => 1770815587,
+      1 => 1770846739,
       2 => 'file',
     ),
   ),
@@ -20,24 +20,31 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698c8067a67933_47359180 (\Smarty\Template $_smarty_tpl) {
+function content_698cfa1a690e56_00942676 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_299691169698c8067a24c20_13626752', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1022200930698cfa1a64a721_33515034', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_299691169698c8067a24c20_13626752 extends \Smarty\Runtime\Block
+class Block_1022200930698cfa1a64a721_33515034 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
 ?>
+
+    <style>
+    .cart-link{
+        background-color:rgba(48, 151, 255, 0.758) !important;
+    }
+    </style>
+
 
 <h2 class="mb-4">Shopping Cart</h2>
 

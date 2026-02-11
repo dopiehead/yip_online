@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 06:02:14
+/* Smarty version 5.7.0, created on 2026-02-11 21:13:32
   from 'file:admin/contents.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6975b1e66deb26_71059313',
+  'unifunc' => 'content_698cf0fcf0ef53_51786268',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '678553262214fecc170e442ced07b18b6b210b45' => 
     array (
       0 => 'admin/contents.tpl',
-      1 => 1769320931,
+      1 => 1770844397,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,28 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6975b1e66deb26_71059313 (\Smarty\Template $_smarty_tpl) {
+function content_698cf0fcf0ef53_51786268 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_20538848916975b1e66a7c17_12971577', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1159477996698cf0fcec6bd6_48313127', "content");
 ?>
 
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_20538848916975b1e66a7c17_12971577 extends \Smarty\Runtime\Block
+class Block_1159477996698cf0fcec6bd6_48313127 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 ?>
+
+
+  <link rel="stylesheet" href="../css/contents.css"/>
 
     <div class="container-fluid mt-3">
       <div class="form-container d-flex flex-wrap justify-content-start gap-3">
