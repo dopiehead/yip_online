@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Core\Cache;
 use App\Core\Validator;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 
 class ProductController extends Controller {
@@ -16,6 +17,9 @@ class ProductController extends Controller {
             return Product::all();
         });
 
+        $userId = $_SESSION['user']['id'] ?? null; 
+
+        $mycart = Order::noOfOrderInCart($userId) ?? ''; 
 
         $minPrice = Product::minPrice() ?? 0;
 
@@ -24,7 +28,8 @@ class ProductController extends Controller {
         $this->render('products/index.tpl', [
             'products' => $products,
             'min_price' => $minPrice,
-            'max_price' => $maxPrice
+            'max_price' => $maxPrice,
+            'mycart'   => $mycart
 
         ]);
     }
@@ -35,6 +40,8 @@ class ProductController extends Controller {
             $_SESSION['csrf'] = bin2hex(random_bytes(32));
         }
         $userId = $_SESSION['user']['id'] ?? null;
+
+        $mycart = Order::noOfOrderInCart($userId) ?? ''; 
 
         if (!isset($_GET['id'])) {
             $_SESSION['error'] = 'Product not found';
@@ -51,9 +58,10 @@ class ProductController extends Controller {
         }
 
         $this->render('products/show.tpl', [
-            'product' => $product,
-            'userId' =>$userId,
-            'csrf_token' => $_SESSION['csrf'] ?? ''
+            'product'    => $product,
+            'userId'     => $userId,
+            'csrf_token' => $_SESSION['csrf'] ?? '',
+        
         ]);
     }
 

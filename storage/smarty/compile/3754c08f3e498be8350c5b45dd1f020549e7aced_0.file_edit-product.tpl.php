@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 08:13:55
+/* Smarty version 5.7.0, created on 2026-02-11 12:14:40
   from 'file:admin/edit-product.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6975d0c3c02de9_36669613',
+  'unifunc' => 'content_698c72b011f1a6_18124962',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3754c08f3e498be8350c5b45dd1f020549e7aced' => 
     array (
       0 => 'admin/edit-product.tpl',
-      1 => 1769328832,
+      1 => 1770811304,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,21 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6975d0c3c02de9_36669613 (\Smarty\Template $_smarty_tpl) {
+function content_698c72b011f1a6_18124962 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_17718676516975d0c3be0bb8_09982472', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_88616278698c72b00f9743_56943819', "content");
 ?>
 
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_17718676516975d0c3be0bb8_09982472 extends \Smarty\Runtime\Block
+class Block_88616278698c72b00f9743_56943819 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
@@ -79,10 +79,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
       </div>
     </div>
     <?php echo '<script'; ?>
- src='../js/delete-product.js'>
-    
-
-<?php echo '</script'; ?>
+ src='../js/delete-product.js'><?php echo '</script'; ?>
 >
 <?php
 }

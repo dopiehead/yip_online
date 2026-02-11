@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Core\Database;
+use PDO;
 
 class Order {
 
@@ -41,25 +42,53 @@ ORDER BY o.created_at DESC
     }
 
 
+    public static function noOfOrderInCart($userId) {
+        $db = Database::connect();
+        $stmt = $db->prepare(
+            "SELECT COUNT(*) as num_cart
+             FROM orders o
+             WHERE o.user_id = ? AND o.status = 0"
+        );
+        $stmt->execute([$userId]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        return $result ? (int)$result['num_cart'] : null;
+    }
+
+
     public static function addItem($user_id, $quantity, $itemId, $status, $created_at)
     {
+        $db = Database::connect();
+    
         try {
-            $db = Database::connect();
+            $db->beginTransaction();
+    
             $stmt = $db->prepare(
                 "INSERT INTO orders
                  (user_id, total, itemId, status, created_at)
-                 VALUES (?, ?, ?, ?, ?)"
+                 VALUES (?, ?, ?, ?, ?)
+                 ON DUPLICATE KEY UPDATE total = total + ?"
             );
     
-            return $stmt->execute([$user_id, $quantity,  $itemId, $status, $created_at]);
-            // returns true on success, false on failure
+            $result = $stmt->execute([
+                $user_id,
+                $quantity,   // goes into total
+                $itemId,
+                $status,
+                $created_at,
+                $quantity    // used for update
+            ]);
+    
+            $db->commit();
+            return $result;
+    
         } catch (\PDOException $e) {
-            // Log error for debugging
+            $db->rollBack();
             error_log("Order insert error: " . $e->getMessage());
             return false;
         }
     }
-
+    
 
     public static function removeItem(int $user_id, int $order_id): bool
 {

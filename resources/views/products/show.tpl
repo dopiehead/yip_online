@@ -17,12 +17,23 @@
             <input type="button" value="-" id="subs" class="btn btn-light" onclick="subst()">&nbsp;
             <input type="number" id="noofitem" min="1" value="{$product.quantity}" id="qty" class="form-control w-25">
             <input type="button" value="+" id="adds" onclick="add()" class="btn btn-light"> 
+          {if $userId != $product.user_id}  
             <button 
                 class="btn btn-success add-to-cart"
                 data-id="{$product.id}">
                 <span class='submit-note'>Add to Cart</span>
                 <span style='display:none;' class='spinner-border text-white'></span>
             </button>
+         {else}
+            <a
+            class="btn btn-success"
+            href="admin/edit-product?id={$product.id|default:0}">
+            <span>Manage this product</span>
+           
+        </a>
+         {/if}
+
+
         </div>
         <input type="hidden" value="{$product.quantity}" id="maximum">
         <input type="hidden" name="csrf" id="csrf" value="{$csrf_token|escape}">

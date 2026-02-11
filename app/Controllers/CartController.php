@@ -21,7 +21,9 @@ class CartController extends Controller {
         // Check if user is logged in
         if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])) {
             $userId = $_SESSION['user']['id'];
+            $mycart = Order::noOfOrderInCart($userId) ?? ''; 
             $product = Order::cart($userId);
+
         } else {
             $userId = null;
             $product = [];
@@ -30,6 +32,7 @@ class CartController extends Controller {
         // Assign variables to the view safely
         $this->view->assign('product', $product ?? []);
         $this->view->assign('user', $_SESSION['user'] ?? []);
+        $this->view->assign('mycart', $mycart ?? '');
         $this->view->assign('csrf_token', $_SESSION['csrf'] ?? '');
     
         $this->view->display('cart/index.tpl');

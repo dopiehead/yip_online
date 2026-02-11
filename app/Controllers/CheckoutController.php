@@ -23,7 +23,7 @@ class CheckoutController extends Controller
 
         $buyer = $_SESSION['user']['id'];
         $cartItems = Order::cart($buyer);
-
+        $mycart = Order::noOfOrderInCart($buyer) ?? ''; 
         if (empty($cartItems)) {
             header("Location: /cart");
             exit;
@@ -43,6 +43,7 @@ class CheckoutController extends Controller
             'buyer'       => $buyer,
             'email'       => $_SESSION['user']['user_email'],
             'cart_items'  => $cartItems,
+            'mycart'      =>$mycart,
             'subtotal'    => $subtotal, // ⚠️ DO NOT FORMAT
             'txn_ref'     => $txn_ref,
             'paystackKey' => $_ENV['paystack_key']

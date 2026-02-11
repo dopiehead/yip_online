@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 03:26:39
+/* Smarty version 5.7.0, created on 2026-02-11 06:04:37
   from 'file:admin/post-contents.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698bf6efb8a5d0_75728300',
+  'unifunc' => 'content_698c1bf5b88ef3_46086702',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '01e83abfaadbff7787fb6fc4aaa285a4217ed657' => 
     array (
       0 => 'admin/post-contents.tpl',
-      1 => 1770780316,
+      1 => 1770789284,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698bf6efb8a5d0_75728300 (\Smarty\Template $_smarty_tpl) {
+function content_698c1bf5b88ef3_46086702 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_231713037698bf6efb79c59_28973487', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1912628967698c1bf5b707b5_87322785', "content");
 ?>
 
   
@@ -35,7 +35,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_231713037698b
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_231713037698bf6efb79c59_28973487 extends \Smarty\Runtime\Block
+class Block_1912628967698c1bf5b707b5_87322785 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
@@ -50,6 +50,8 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
             <!-- Product Info -->
             <div class="col-lg-6">
               <div class="form-section">
+                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars((string)$_smarty_tpl->getValue('csrf_token'), ENT_QUOTES, 'UTF-8', true);?>
+">
                 <h2 class="section-title">Product Information <i class="fas fa-info-circle info-icon"></i></h2>
 
                 <div class="mb-3">

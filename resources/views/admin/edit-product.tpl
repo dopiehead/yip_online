@@ -33,9 +33,6 @@
         <button  class="btn btn-danger delete-product form-control mt-2" id="{$product.id}"><i class='fa fa-trash text-white'></i> Delete Product</button>
       </div>
     </div>
-    <script src='../js/delete-product.js'>
-    
-
-</script>
+    <script src='../js/delete-product.js'></script>
 {/block}
 

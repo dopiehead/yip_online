@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 03:57:59
+/* Smarty version 5.7.0, created on 2026-02-11 12:42:15
   from 'file:partials/products.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698bfe472c9324_39830780',
+  'unifunc' => 'content_698c792784c9c7_84699265',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8367c51641475ecc6a17a82750b6cc231d67732' => 
     array (
       0 => 'partials/products.tpl',
-      1 => 1770782269,
+      1 => 1770813719,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698bfe472c9324_39830780 (\Smarty\Template $_smarty_tpl) {
+function content_698c792784c9c7_84699265 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/partials';
 ?>
 <div class='text-end my-2'>
@@ -28,7 +28,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/par
 </span> Product(s) found
 </div>
 
-<div class="row g-4">
+<div class="row g-4" data-aos="fade-up">
 
 <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('products'), 'product');
