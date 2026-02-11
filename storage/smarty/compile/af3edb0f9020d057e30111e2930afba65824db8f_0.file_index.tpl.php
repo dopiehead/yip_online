@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 03:39:31
+/* Smarty version 5.7.0, created on 2026-02-11 04:07:06
   from 'file:products/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698bf9f30411c0_38828518',
+  'unifunc' => 'content_698c006adc5a73_27319903',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af3edb0f9020d057e30111e2930afba65824db8f' => 
     array (
       0 => 'products/index.tpl',
-      1 => 1770781167,
+      1 => 1770782815,
       2 => 'file',
     ),
   ),
@@ -21,20 +21,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:partials/filter-form.tpl' => 1,
   ),
 ))) {
-function content_698bf9f30411c0_38828518 (\Smarty\Template $_smarty_tpl) {
+function content_698c006adc5a73_27319903 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1117483971698bf9f30331d0_48092088', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_806622636698c006adb80e3_03870146', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_1117483971698bf9f30331d0_48092088 extends \Smarty\Runtime\Block
+class Block_806622636698c006adb80e3_03870146 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
@@ -74,13 +74,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/pro
     <div id="results">
          <div class='w-100 text-center'><span style='width:200px; height:200px;' class='spinner-border text-secondary fs-3 mt-3'></span> </div>
     </div>
-
-    <div class='text-center p-3 mt-5'>
-     
-    <span class='text-secondary fw-bold fs-5'>Powered by DIGITA-X</span>
-
-    </div>
-   
+ 
 </div>
 
 <?php $_smarty_tpl->renderSubTemplate("file:partials/filter-form.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-24 21:45:56
+/* Smarty version 5.7.0, created on 2026-02-11 03:56:48
   from 'file:layouts/main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_69753d9495df46_20473784',
+  'unifunc' => 'content_698bfe00b2dca4_77604789',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '42e4e2dbfbc71c6aac8ac55fecbe17dfd9d3b03b' => 
     array (
       0 => 'layouts/main.tpl',
-      1 => 1769291149,
+      1 => 1770782203,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:../partials/footer.tpl' => 1,
   ),
 ))) {
-function content_69753d9495df46_20473784 (\Smarty\Template $_smarty_tpl) {
+function content_698bfe00b2dca4_77604789 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/layouts';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -31,7 +31,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo (($tmp = $_smarty_tpl->getValue('title') ?? null)===null||$tmp==='' ? "My E-Commerce" ?? null : $tmp);?>
+    <title><?php echo (($tmp = $_smarty_tpl->getValue('title') ?? null)===null||$tmp==='' ? "Yiponline" ?? null : $tmp);?>
 </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <?php echo '<script'; ?>
@@ -57,7 +57,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
         <?php }?>
 
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_121486369753d94954e26_82312242', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_2083004521698bfe00b236f7_96110100', "content");
 ?>
 
     </div>
@@ -73,7 +73,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_121486369753d
 </html>
 <?php }
 /* {block "content"} */
-class Block_121486369753d94954e26_82312242 extends \Smarty\Runtime\Block
+class Block_2083004521698bfe00b236f7_96110100 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/layouts';

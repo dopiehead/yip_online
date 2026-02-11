@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 03:33:55
+/* Smarty version 5.7.0, created on 2026-02-11 03:57:59
   from 'file:partials/products.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698bf8a3967923_71293312',
+  'unifunc' => 'content_698bfe472c9324_39830780',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8367c51641475ecc6a17a82750b6cc231d67732' => 
     array (
       0 => 'partials/products.tpl',
-      1 => 1770780758,
+      1 => 1770782269,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698bf8a3967923_71293312 (\Smarty\Template $_smarty_tpl) {
+function content_698bfe472c9324_39830780 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/partials';
 ?>
 <div class='text-end my-2'>
@@ -50,7 +50,7 @@ $foreach0DoElse = false;
 
             <div class="card-body d-flex flex-column">
 
-                <h5 class="card-title fw-semibold mb-2 text-truncate">
+                <h5 class="card-title fw-semibold mb-2 text-truncate text-capitalize">
                     <?php echo $_smarty_tpl->getValue('product')['name'];?>
 
                 </h5>

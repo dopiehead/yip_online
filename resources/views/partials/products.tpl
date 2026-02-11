@@ -18,7 +18,7 @@
 
             <div class="card-body d-flex flex-column">
 
-                <h5 class="card-title fw-semibold mb-2 text-truncate">
+                <h5 class="card-title fw-semibold mb-2 text-truncate text-capitalize">
                     {$product.name}
                 </h5>
 

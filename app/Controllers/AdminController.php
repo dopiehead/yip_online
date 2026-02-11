@@ -167,9 +167,13 @@ class AdminController extends Controller
             exit;
         }
 
+        if (!isset($_SESSION['csrf'])) {
+            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+        }
+
         $name = trim($_POST['product_name'] ?? '');
         $price = trim($_POST['product_price'] ?? '');
-        $category = intval($_POST['product_category'] ?? 1);
+        $category = trim($_POST['product_category'] ?? 1);
         $quantity = intval($_POST['product_quantity'] ?? 1);
         $files = $_FILES['product_images'] ?? null;
 

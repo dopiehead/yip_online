@@ -35,13 +35,7 @@
     <div id="results">
          <div class='w-100 text-center'><span style='width:200px; height:200px;' class='spinner-border text-secondary fs-3 mt-3'></span> </div>
     </div>
-
-    <div class='text-center p-3 mt-5'>
-     
-    <span class='text-secondary fw-bold fs-5'>Powered by DIGITA-X</span>
-
-    </div>
-   
+ 
 </div>
 
 {include file="partials/filter-form.tpl"}

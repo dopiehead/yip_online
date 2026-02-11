@@ -10,6 +10,7 @@
             <!-- Product Info -->
             <div class="col-lg-6">
               <div class="form-section">
+                <input type="hidden" name="csrf" value="{$csrf_token|escape}">
                 <h2 class="section-title">Product Information <i class="fas fa-info-circle info-icon"></i></h2>
 
                 <div class="mb-3">

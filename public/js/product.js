@@ -21,9 +21,9 @@ $(document).ready(function () {
 
         if (missing.length > 0) {
             swal({
-                title: "Missing Information",
+                title: "Notice",
                 icon: "warning",
-                text: "Please provide the following:\n\n" + missing.join(', ')
+                text: "Please login to continue."
             });
             $(".spinner-border").hide();
             $(".submit-note").show();
