@@ -64,8 +64,11 @@
         </div>
 
         <div class="text-center mt-4">
+        
             <a href="../admin/order-history" class="btn btn-success">View My Orders</a>
             <a href="../index" class="btn btn-primary">Continue Shopping</a>
+            <a onclick="window.print()" class="btn btn-dark px-4">Print Receipt</a>
+                                 
         </div>
     {/if}
 

@@ -308,6 +308,7 @@ class AdminController extends Controller
     $id   = intval($_POST['user_id'] ?? 0);
     $name = trim($_POST['name'] ?? '');
     $password = trim($_POST['password'] ?? '');
+    $user_type = trim($_POST['user_type'] ?? '');
 
     if(!$id || empty($name)){
         echo json_encode([
@@ -317,7 +318,13 @@ class AdminController extends Controller
         return;
     }
 
-    $updated = User::update($id, ['user_name' => $name]);
+    $updated = User::update($id, [
+        
+        'user_name' => $name,
+        'user_password' =>$password,
+        'user_type' =>$user_type,
+    
+    ]);
 
     if($updated){
         echo json_encode([

@@ -36,6 +36,11 @@
                     <div class="fs-6">{$userDetails.created_at}</div>
                 </div>
 
+                <div class="col-md-6">
+                     <label class="text-secondary small">User Type</label>
+                     <div class="fs-6 text-capitalize">{$userDetails.user_type}</div>
+                </div>
+
             </div>
 
         </div>
@@ -75,6 +80,13 @@
         </div>
 
 
+        <div class="mb-3">
+        <label class="form-label text-secondary small">Switch Role</label>
+        <select class="form-control" name="user_type" type="user_type">
+              <option value='customer'>Customer</option> 
+              <option value='vendor'>Vendor</option>
+        </select>
+        </div>
 
         <div class="mb-3">
             <label class="form-label text-secondary small">Password</label>

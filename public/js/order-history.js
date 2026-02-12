@@ -94,9 +94,9 @@ $(document).on("click", "#btn-receipt", function (e) {
             
                                 <!-- Footer -->
                                 <div class="text-center mt-4">
-                                    <button onclick="window.print()" class="btn btn-dark px-4">
+                                    <a onclick="window.print()" class="btn btn-dark px-4">
                                         Print Receipt
-                                    </button>
+                                    </a>
                                 </div>
             
                             </div>
@@ -123,3 +123,28 @@ $(document).on("click",".closePopup",function(e){
    $(".popup-receipt").fadeOut();
    $(".bg-overlay").addClass("d-none");
 });
+
+
+function printReceipt(button) {
+    // Find the closest container that wraps the receipt
+    const receiptDiv = $(button).closest('.container')[0]; // .container wrapping a single receipt
+
+    if (!receiptDiv) return;
+
+    const newWin = window.open('', '_blank', 'width=800,height=600');
+    newWin.document.write(`
+        <html>
+            <head>
+                <title>Receipt</title>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+            </head>
+            <body>
+                ${receiptDiv.outerHTML}
+            </body>
+        </html>
+    `);
+    newWin.document.close();
+    newWin.focus();
+    newWin.print();
+    newWin.close();
+}

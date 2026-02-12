@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 21:25:32
+/* Smarty version 5.7.0, created on 2026-02-12 21:12:13
   from 'file:admin/user-settings.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698cf3cceb0076_96933957',
+  'unifunc' => 'content_698e422d6d96c7_39455233',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '12bb394e0f7c0d838c0dbada3ec7c7a7fabc9753' => 
     array (
       0 => 'admin/user-settings.tpl',
-      1 => 1770845127,
+      1 => 1770930421,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698cf3cceb0076_96933957 (\Smarty\Template $_smarty_tpl) {
+function content_698e422d6d96c7_39455233 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_487417017698cf3cce94242_63677742', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1219112658698e422d6b8552_73531823', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_487417017698cf3cce94242_63677742 extends \Smarty\Runtime\Block
+class Block_1219112658698e422d6b8552_73531823 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
@@ -74,6 +74,12 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
                 <div class="col-md-6">
                     <label class="text-secondary small">Joined</label>
                     <div class="fs-6"><?php echo $_smarty_tpl->getValue('userDetails')['created_at'];?>
+</div>
+                </div>
+
+                <div class="col-md-6">
+                     <label class="text-secondary small">User Type</label>
+                     <div class="fs-6 text-capitalize"><?php echo $_smarty_tpl->getValue('userDetails')['user_type'];?>
 </div>
                 </div>
 
@@ -118,6 +124,13 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
         </div>
 
 
+        <div class="mb-3">
+        <label class="form-label text-secondary small">Switch Role</label>
+        <select class="form-control" name="user_type" type="user_type">
+              <option value='customer'>Customer</option> 
+              <option value='vendor'>Vendor</option>
+        </select>
+        </div>
 
         <div class="mb-3">
             <label class="form-label text-secondary small">Password</label>

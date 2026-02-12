@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-24 22:46:32
+/* Smarty version 5.7.0, created on 2026-02-12 19:06:20
   from 'file:auth/login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_69754bc87e0174_56549005',
+  'unifunc' => 'content_698e24acedc373_81035189',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '950e77e4f73d09de62c11567927d03279b1d29e6' => 
     array (
       0 => 'auth/login.tpl',
-      1 => 1769294789,
+      1 => 1770922960,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_69754bc87e0174_56549005 (\Smarty\Template $_smarty_tpl) {
+function content_698e24acedc373_81035189 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/auth';
 ?>
 <!DOCTYPE html>
@@ -76,6 +76,9 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
                         <span style="display:none;" class="spinner-border text-white"></span>
                     </button>
 
+                    <a href="google-login" class="btn btn-outline-danger">
+                    Continue with Google
+                    </a>
                     <div id="signup-link-wrapper">
                         <span id="signup-text">Don't have an account? </span>
                         <a href="register" id="signup-link">Sign up</a>

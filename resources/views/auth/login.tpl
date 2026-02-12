@@ -49,6 +49,9 @@
                         <span style="display:none;" class="spinner-border text-white"></span>
                     </button>
 
+                    <a href="google-login" class="btn btn-outline-danger">
+                    Continue with Google
+                    </a>
                     <div id="signup-link-wrapper">
                         <span id="signup-text">Don't have an account? </span>
                         <a href="register" id="signup-link">Sign up</a>

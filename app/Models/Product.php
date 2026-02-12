@@ -53,6 +53,7 @@ class Product
             p.quantity_sold AS total,
             p.user_id AS vendor_id,
             b.reference_no AS reference_no,
+            b.date_added AS created_at,
             b.client_id AS client_id
         FROM orders o
         JOIN products p 

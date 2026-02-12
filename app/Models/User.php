@@ -23,6 +23,15 @@ class User {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function get($email)
+{
+    $db = Database::connect();
+    $stmt = $db->prepare("SELECT * FROM users WHERE user_email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch(PDO::FETCH_OBJ); // return object
+    return $user ?: null;
+}
+
     public static function create(array $data) {
         // Ensure required keys exist
         $name = trim($data['name'] ?? '');

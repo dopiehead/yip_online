@@ -48,7 +48,8 @@ class VerifyTransactionController extends Controller
         $cartItems = Order::cart($userId) ?? [];
 
         if(empty($cartItems)){
-            header("Location:index");
+            header("Location:../index");
+            exit;
         }
 
         // Payment confirmed in test mode ✅

@@ -2,23 +2,28 @@
 
 return [
     'public' => [
+
         '/index'           => ['ProductController', 'index'],
         '/product'         => ['ProductController', 'show'],
         '/filter'          => ['ProductController', 'filter'],
         '/search-products' => ['ProductController','filterProduct'],
         '/api/products'    => ['Api\ProductApiController', 'index'],
+
     ],
 
     'auth' => [
+
         '/login'           => ['AuthController', 'login'],
         '/login-post'      => ['AuthController', 'loginPost'],
         '/register'        => ['AuthController', 'register'],
         '/register-post'   => ['AuthController', 'registerPost'],
         '/checkout'        => ['CheckoutController', 'index'],
         '/checkout/process' => ['CheckoutController', 'process'],
+
     ],
 
     'admin' => [
+
         '/admin/index'              => ['AdminController', 'dashboard'],
         '/admin/order-history'      => ['AdminController', 'orders'],
         '/admin/contents'           => ['AdminController', 'myproducts'],
@@ -34,14 +39,24 @@ return [
         '/admin/edit-user-details'  =>['AdminController', 'userUpdate'],
         '/admin/get-receipt'  =>['AdminController', 'loadReceipt'],
         '/admin/logout'             => ['AdminController', 'logout'],
+
+    ],
+
+     'google' =>  [
+
+         '/google-login'    => ['GoogleController', 'googleLogin'],
+         '/google-callback' => ['GoogleController', 'googleCallback'],
+
     ],
 
     'cart' => [
+
         '/cart'              => ['CartController', 'index'],
         '/cart/add'          => ['CartController', 'add'],
         '/cart/remove'       => ['CartController', 'remove'],
         '/cart/get'          => ['CartController', 'get'],
         '/cart/verify-transaction' => ['VerifyTransactionController', 'index'],
+
     ],
 
     'navbar'=>[
@@ -52,6 +67,8 @@ return [
 
 
     'payment' => [
+
         '/pay' => ['PaymentController', 'pay'],
+        
     ],
 ];
