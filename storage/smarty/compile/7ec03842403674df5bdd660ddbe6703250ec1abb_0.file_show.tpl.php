@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 13:11:24
+/* Smarty version 5.7.0, created on 2026-02-11 21:55:59
   from 'file:products/show.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698c7ffc2e3956_03534995',
+  'unifunc' => 'content_698cfaefe04173_61151442',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ec03842403674df5bdd660ddbe6703250ec1abb' => 
     array (
       0 => 'products/show.tpl',
-      1 => 1770815479,
+      1 => 1770846956,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698c7ffc2e3956_03534995 (\Smarty\Template $_smarty_tpl) {
+function content_698cfaefe04173_61151442 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_310443406698c7ffc2ad436_72037053', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1312096967698cfaefdd38b7_11800649', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_310443406698c7ffc2ad436_72037053 extends \Smarty\Runtime\Block
+class Block_1312096967698cfaefdd38b7_11800649 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/products';
@@ -47,7 +47,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/pro
     </div>
 
     <div class="col-md-6">
-        <h2><?php echo $_smarty_tpl->getValue('product')['name'];?>
+        <h2 class='text-capitalize'><?php echo $_smarty_tpl->getValue('product')['name'];?>
 </h2>
         <h4 class="text-primary mb-3"><span class=' fas fa-naira-sign'></span> <?php echo $_smarty_tpl->getValue('product')['price'];?>
 </h4>

@@ -110,9 +110,28 @@ class AdminController extends Controller
        }
         $this->render('admin/order-history.tpl', [
             'products' => $products,
-            'totalPrice' => $totalPrice
+            'totalPrice' => $totalPrice,
+            'success'    => true,
         ]);
     }
+
+
+    public function loadReceipt()
+    {
+        $products = Product::productsBoughtByMe($this->userId) ?: [];
+    
+        $receipts = [];
+    
+        foreach ($products as $product) {
+            $ref = $product['reference_no'];
+            $receipts[$ref][] = $product;
+        }
+    
+        echo json_encode($receipts);
+    }
+    
+
+
 
     public function myproducts()
     {

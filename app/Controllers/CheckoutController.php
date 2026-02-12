@@ -17,7 +17,7 @@ class CheckoutController extends Controller
         }
 
         if (!isset($_SESSION['user'])) {
-            header('Location: /login');
+            header('Location: ../login');
             exit;
         }
 
@@ -25,7 +25,7 @@ class CheckoutController extends Controller
         $cartItems = Order::cart($buyer);
         $mycart = Order::noOfOrderInCart($buyer) ?? ''; 
         if (empty($cartItems)) {
-            header("Location: /cart");
+            header("Location: index");
             exit;
         }
 

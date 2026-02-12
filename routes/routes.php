@@ -32,6 +32,7 @@ return [
         '/admin/sold-history'       => ['AdminController', 'mysoldproducts'],
         '/admin/user-settings'      => ['AdminController', 'userSettings'],
         '/admin/edit-user-details'  =>['AdminController', 'userUpdate'],
+        '/admin/get-receipt'  =>['AdminController', 'loadReceipt'],
         '/admin/logout'             => ['AdminController', 'logout'],
     ],
 

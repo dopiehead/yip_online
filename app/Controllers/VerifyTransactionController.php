@@ -47,6 +47,10 @@ class VerifyTransactionController extends Controller
 
         $cartItems = Order::cart($userId) ?? [];
 
+        if(empty($cartItems)){
+            header("Location:index");
+        }
+
         // Payment confirmed in test mode ✅
          try {
             $transactionService = new TransactionService();

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 21:26:47
+/* Smarty version 5.7.0, created on 2026-02-12 15:13:46
   from 'file:admin/order-history.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698cf4173cb6f6_83954060',
+  'unifunc' => 'content_698dee2a282528_49894268',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6a87d98cd970cad9a366f545bc4b559af949f035' => 
     array (
       0 => 'admin/order-history.tpl',
-      1 => 1770845055,
+      1 => 1770909197,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698cf4173cb6f6_83954060 (\Smarty\Template $_smarty_tpl) {
+function content_698dee2a282528_49894268 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1672753195698cf4173b7525_84131115', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1872662467698dee2a2597d0_31323806', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_1672753195698cf4173b7525_84131115 extends \Smarty\Runtime\Block
+class Block_1872662467698dee2a2597d0_31323806 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
@@ -39,6 +39,12 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/adm
 
 
   <link rel="stylesheet" href="../css/order-history.css"/>
+
+  <div style='display:none;z-index:999;' class='position-fixed popup-receipt top-25 start-50' id='result'></div>
+  <div style='opacity:0.7;z-index:990;' class='w-100 h-100 bg-dark bg-overlay position-fixed d-none'></div>
+  <div class='loader' style='display:none'>
+      <span class='spinner-border text-secondary fs-2'></span>
+  </div>
 
 
     <div class="container-fluid mt-3">
@@ -59,18 +65,23 @@ $foreach0DoElse = false;
  ( <?php echo $_smarty_tpl->getValue('product')['total'];?>
  )</span>
         </div>
-        <div class='mt-2 text-secondary fw-bold d-flex justify-content-end px-3 pb-2'>
-            
-            <span><i class='fa fa-dollar-sign'></i><?php echo $_smarty_tpl->getValue('totalPrice');?>
-</span>
-        </div>
+        <div class='mt-2 d-flex justify-content-end px-3 pb-2'>
+             <a href='#' id='btn-receipt' class='text-sm text-primary text-decoration-underline' data-id='<?php echo $_smarty_tpl->getValue('product')['reference_no'];?>
+'>View receipt <i class='fas fa-arrow-right'></i></a>
+                    </div>
       </div>
     <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
   </div>
-     </div>
   </div>
+  </div>
+
+
+  <?php echo '<script'; ?>
+ src='../js/order-history.js'><?php echo '</script'; ?>
+>
+
 <?php
 }
 }

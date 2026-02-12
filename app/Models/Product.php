@@ -44,34 +44,32 @@ class Product
 
     // Fetch products bought by a user (not sold by them and unsold)
     public static function productsBoughtByMe(int $buyerId): array
-{
-    $sql = "SELECT 
-    p.id,
-    p.name AS name,
-    p.price AS price,
-    p.image AS image, 
-    p.quantity_sold AS total,
-    p.user_id AS vendor_id
-
-FROM orders o
-JOIN products p 
-    ON p.id = o.itemId
-
-WHERE o.user_id = :buyer_id
-  AND o.status = 1
-
-ORDER BY o.id DESC;
-";
-
-    $stmt = Database::connect()->prepare($sql);
-
-    // ✅ Correct named binding
-    $stmt->bindValue(':buyer_id', $buyerId, \PDO::PARAM_INT);
-    $stmt->execute();
-
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-}
-   
+    {
+        $sql = "SELECT 
+            p.id,
+            p.name AS name,
+            p.price AS price,
+            p.image AS image, 
+            p.quantity_sold AS total,
+            p.user_id AS vendor_id,
+            b.reference_no AS reference_no,
+            b.client_id AS client_id
+        FROM orders o
+        JOIN products p 
+            ON p.id = o.itemId
+        JOIN buyer_receipt b
+            ON b.client_id = o.user_id
+        WHERE o.user_id = :buyer_id
+          AND o.status = 1
+        ORDER BY o.id DESC";
+    
+        $stmt = Database::connect()->prepare($sql);
+        $stmt->bindValue(':buyer_id', $buyerId, \PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?: [];
+    }
+    
 
     // Fetch products sold by a user
     public static function productsSoldByMe(int $vendorId): array
