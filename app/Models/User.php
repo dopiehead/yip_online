@@ -54,7 +54,36 @@ class User {
         // reset_token is initially NULL
         return $stmt->execute([$name, $email, $hash, $user_type, null, $created_at]);
     }
+
+    public static function createGoogle(array $data): object
+    {
+        // insert into DB and get last inserted ID
+        $db = Database::connect(); // your DB connection
+        $stmt = $db->prepare("INSERT INTO users (user_name, user_email, user_type, user_password, created_at) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([
+            $data['name'],
+            $data['email'],
+            $data['user_type'],
+            $data['password'],
+            $data['created_at']
+        ]);
     
+        $id = $db->lastInsertId();
+    
+        // fetch the newly created user as object
+        return self::getById($id);
+    }
+
+
+    public static function getById(int $id): ?object
+    {
+        $db = Database::connect(); // adjust to your DB class
+        $stmt = $db->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+        $stmt->execute(['id' => $id]);
+        $user = $stmt->fetch(\PDO::FETCH_OBJ);
+        return $user ?: null;
+    } 
+
 
     public static function update(int $id, array $data): bool
 {

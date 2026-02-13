@@ -499,3 +499,13 @@ select:focus {
     border:2px solid black;
     width:10px;
 }
+
+#google-submit-button{
+  
+    background: linear-gradient(rgb(41, 67, 163), rgb(165, 43, 226));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+   
+}
+
+

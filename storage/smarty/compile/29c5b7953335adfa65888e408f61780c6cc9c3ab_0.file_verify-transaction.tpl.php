@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-25 23:46:13
+/* Smarty version 5.7.0, created on 2026-02-13 02:38:50
   from 'file:cart/verify-transaction.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6976ab456ab521_31240901',
+  'unifunc' => 'content_698e8ebabd6411_69517664',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '29c5b7953335adfa65888e408f61780c6cc9c3ab' => 
     array (
       0 => 'cart/verify-transaction.tpl',
-      1 => 1769384767,
+      1 => 1770913302,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6976ab456ab521_31240901 (\Smarty\Template $_smarty_tpl) {
+function content_698e8ebabd6411_69517664 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_6913133516976ab45675918_30428095', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_545942776698e8ebab7db90_23902254', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/main.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_6913133516976ab45675918_30428095 extends \Smarty\Runtime\Block
+class Block_545942776698e8ebab7db90_23902254 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/cart';
@@ -123,8 +123,11 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </div>
 
         <div class="text-center mt-4">
+        
             <a href="../admin/order-history" class="btn btn-success">View My Orders</a>
             <a href="../index" class="btn btn-primary">Continue Shopping</a>
+            <a onclick="window.print()" class="btn btn-dark px-4">Print Receipt</a>
+                                 
         </div>
     <?php }?>
 

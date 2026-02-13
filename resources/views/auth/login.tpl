@@ -50,7 +50,7 @@
                         <span style="display:none;" class="spinner-border text-white"></span>
                     </button>
 
-                    <p class='text-center mt-3 mb-2 text-secondary'>Continue with</p>
+                    <p class='text-center mt-3 mb-2 text-danger'>Continue with</p>
 
                     <div class='text-center'>
                         <a href="google-login" class="btn shadow bg-light" id="google-submit-button">

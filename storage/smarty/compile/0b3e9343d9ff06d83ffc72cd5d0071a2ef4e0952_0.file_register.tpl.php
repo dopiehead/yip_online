@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-01-26 09:26:38
+/* Smarty version 5.7.0, created on 2026-02-13 01:17:54
   from 'file:auth/register.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_6977334e583fa1_90589677',
+  'unifunc' => 'content_698e7bc255f8e2_59601528',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0b3e9343d9ff06d83ffc72cd5d0071a2ef4e0952' => 
     array (
       0 => 'auth/register.tpl',
-      1 => 1769419178,
+      1 => 1770945453,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6977334e583fa1_90589677 (\Smarty\Template $_smarty_tpl) {
+function content_698e7bc255f8e2_59601528 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/auth';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -143,6 +143,14 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
                     <div class="spinner-border text-primary ms-3 d-none" role="status"></div>
                     <small class="signup-note text-muted ms-2 d-none">Processing...</small>
                 </div>
+
+                <p class='text-center mt-3 mb-2 text-danger'>Continue with</p>
+
+                    <div class='text-center'>
+                        <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
+                            <i class="fa-brands fa-google fs-5"></i>
+                        </a>
+                    </div>
 
 
                 <div class="login-link">

@@ -54,10 +54,9 @@ class GoogleController extends Controller
         $avatar = $googleUser->picture;
 
         // ✅ Try to find the user
-        $user = User::find($email);
+        $user = User::get($email);
 
         if (!$user) {
-
             $userData = [
                 'name'       => $name,
                 'email'      => $email,
@@ -65,16 +64,12 @@ class GoogleController extends Controller
                 'password'   => password_hash(bin2hex(random_bytes(8)), PASSWORD_DEFAULT),
                 'created_at' => date("Y-m-d H:i:s")
             ];
-
-            // Immediately fetch user by email to get object and id
-            $user = User::get($email);
-            if (!$user) {
-
-                $created = User::create($userData);
-
-            }
+        
+            // Create the user and return the user object
+            $user = User::createGoogle($userData); 
         }
-
+        
+        // Now $user is guaranteed to exist
         $this->user = $user;
         $this->userId = $user->id;
 

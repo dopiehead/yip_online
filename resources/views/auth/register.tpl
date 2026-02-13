@@ -114,6 +114,14 @@
                     <small class="signup-note text-muted ms-2 d-none">Processing...</small>
                 </div>
 
+                <p class='text-center mt-3 mb-2 text-danger'>Continue with</p>
+
+                    <div class='text-center'>
+                        <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
+                            <i class="fa-brands fa-google fs-5"></i>
+                        </a>
+                    </div>
+
 
                 <div class="login-link">
                     Already have an account? <a href="login">Sign in</a>
