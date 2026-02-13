@@ -9,7 +9,7 @@ use Google_Service_Oauth2;
 
 class GoogleController extends Controller
 {
-    protected object $user;
+    protected ?object $user = null;
     protected int $userId;
 
     public function googleLogin()
@@ -71,7 +71,7 @@ class GoogleController extends Controller
             if (!$user) {
 
                 $created = User::create($userData);
-                
+
             }
         }
 
@@ -88,6 +88,8 @@ class GoogleController extends Controller
             'google_id'  => $googleId,
             'avatar'     => $avatar
         ];
+
+        session_regenerate_id(true);
 
         header("Location: ../public/admin/index");
         exit();

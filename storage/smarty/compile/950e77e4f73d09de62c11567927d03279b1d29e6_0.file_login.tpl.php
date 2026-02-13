@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-12 19:06:20
+/* Smarty version 5.7.0, created on 2026-02-12 23:54:34
   from 'file:auth/login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698e24acedc373_81035189',
+  'unifunc' => 'content_698e683a2d7d98_36405432',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '950e77e4f73d09de62c11567927d03279b1d29e6' => 
     array (
       0 => 'auth/login.tpl',
-      1 => 1770922960,
+      1 => 1770940470,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698e24acedc373_81035189 (\Smarty\Template $_smarty_tpl) {
+function content_698e683a2d7d98_36405432 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/auth';
 ?>
 <!DOCTYPE html>
@@ -31,6 +31,7 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
     <title><?php echo $_smarty_tpl->getValue('title');?>
 </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="css/login.css" rel="stylesheet">
     
 </head>
@@ -76,9 +77,14 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
                         <span style="display:none;" class="spinner-border text-white"></span>
                     </button>
 
-                    <a href="google-login" class="btn btn-outline-danger">
-                    Continue with Google
-                    </a>
+                    <p class='text-center mt-3 mb-2 text-secondary'>Continue with</p>
+
+                    <div class='text-center'>
+                        <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
+                            <i class="fa-brands fa-google fs-5"></i>
+                        </a>
+                    </div>
+
                     <div id="signup-link-wrapper">
                         <span id="signup-text">Don't have an account? </span>
                         <a href="register" id="signup-link">Sign up</a>

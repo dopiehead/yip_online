@@ -45,6 +45,7 @@ class CloudinaryService {
         }
     }
 
+    
     public static function delete($publicId) {
         $cloud = self::init();
         try {

@@ -65,6 +65,7 @@ class AdminController extends Controller
         $this->requireVendor();
 
         $products = Product::byVendor($this->userId);
+        
         $this->render('admin/index.tpl', [
             'products' => $products,
             'vendor' => $this->userId
@@ -319,7 +320,7 @@ class AdminController extends Controller
     }
 
     $updated = User::update($id, [
-        
+
         'user_name' => $name,
         'user_password' =>$password,
         'user_type' =>$user_type,
@@ -331,6 +332,9 @@ class AdminController extends Controller
             'status' => 'success',
             'message' => 'Profile updated successfully'
         ]);
+
+        $_SESSION['user']['user_type'] = $user_type; 
+
     } else {
         echo json_encode([
             'status' => 'error',

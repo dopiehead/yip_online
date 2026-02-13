@@ -147,6 +147,9 @@ class AuthController extends Controller {
                 ];
 
 
+                 session_regenerate_id(true);
+
+
                 echo json_encode([  
                     'status' => 'success',
                     'message' => 'Login successful',

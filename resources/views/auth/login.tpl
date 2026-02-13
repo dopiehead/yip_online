@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$title}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="css/login.css" rel="stylesheet">
     
 </head>
@@ -49,9 +50,14 @@
                         <span style="display:none;" class="spinner-border text-white"></span>
                     </button>
 
-                    <a href="google-login" class="btn btn-outline-danger">
-                    Continue with Google
-                    </a>
+                    <p class='text-center mt-3 mb-2 text-secondary'>Continue with</p>
+
+                    <div class='text-center'>
+                        <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
+                            <i class="fa-brands fa-google fs-5"></i>
+                        </a>
+                    </div>
+
                     <div id="signup-link-wrapper">
                         <span id="signup-text">Don't have an account? </span>
                         <a href="register" id="signup-link">Sign up</a>
