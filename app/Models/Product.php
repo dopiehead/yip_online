@@ -214,26 +214,37 @@ class Product
     // Create a product with image upload via Cloudinary
     public static function createWithImage(array $data, array $file)
     {
-        $imageUrl = CloudinaryService::upload($file['tmp_name'], "products");
-
+        // Upload image
+        $upload = CloudinaryService::upload($file['tmp_name'], "products");
+    
+        $imageUrl = $upload['url'];
+        $publicId = $upload['public_id'];
+    
         $stmt = Database::connect()->prepare(
-            "INSERT INTO " . self::$table . " (name, price, image, category, user_id, quantity, quantity_sold, sold, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            "INSERT INTO " . self::$table . " 
+            (name, price, public_id, image, category, user_id, quantity, quantity_sold, sold, created_at) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
+    
         $stmt->execute([
             $data['name'],
             $data['price'],
-            $imageUrl,
+            $publicId,        // ✅ correct
+            $imageUrl,        // ✅ correct
             $data['category'],
             $data['user_id'],
             $data['quantity'] ?? 1,
             $data['quantity_sold'] ?? 0,
             $data['sold'] ?? 0,
             $data['created_at'] ?? date("Y-m-d H:i:s")
-
         ]);
-
-        return $imageUrl;
+    
+        return [
+            "url" => $imageUrl,
+            "public_id" => $publicId
+        ];
     }
+    
 
     public static function byVendor(int $vendorId): array
 {

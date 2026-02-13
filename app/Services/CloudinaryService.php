@@ -10,7 +10,6 @@ class CloudinaryService {
     public static function init() {
         if (!self::$cloudinary) {
 
-            // Read from env
             $cloudName = $_ENV['CLOUDINARY_CLOUD_NAME'] ?? null;
             $apiKey    = $_ENV['CLOUDINARY_API_KEY'] ?? null;
             $apiSecret = $_ENV['CLOUDINARY_API_SECRET'] ?? null;
@@ -19,7 +18,6 @@ class CloudinaryService {
                 throw new \Exception("Cloudinary configuration missing. Check your .env file.");
             }
 
-            // Initialize Cloudinary with array config
             self::$cloudinary = new Cloudinary([
                 'cloud' => [
                     'cloud_name' => $cloudName,
@@ -33,21 +31,28 @@ class CloudinaryService {
         return self::$cloudinary;
     }
 
+    // ✅ Upload and return BOTH url + public_id
     public static function upload($filePath, $folder = "ecommerce") {
         $cloud = self::init();
+
         try {
             $upload = $cloud->uploadApi()->upload($filePath, [
                 "folder" => $folder
             ]);
-            return $upload['secure_url'];
+
+            return [
+                "url" => $upload['secure_url'],
+                "public_id" => $upload['public_id']
+            ];
+
         } catch (\Exception $e) {
             throw new \Exception("Cloudinary upload failed: " . $e->getMessage());
         }
     }
 
-    
     public static function delete($publicId) {
         $cloud = self::init();
+
         try {
             return $cloud->uploadApi()->destroy($publicId);
         } catch (\Exception $e) {

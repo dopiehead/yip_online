@@ -56,11 +56,13 @@ class GoogleController extends Controller
         // ✅ Try to find the user
         $user = User::get($email);
 
+        $user_type = 'customer' ? 'vendor' : null ;
+
         if (!$user) {
             $userData = [
                 'name'       => $name,
                 'email'      => $email,
-                'user_type'  => 'customer',
+                'user_type'  => $user_type,
                 'password'   => password_hash(bin2hex(random_bytes(8)), PASSWORD_DEFAULT),
                 'created_at' => date("Y-m-d H:i:s")
             ];
@@ -78,7 +80,7 @@ class GoogleController extends Controller
             'id'         => $this->userId,
             'user_email' => $email,
             'user_name'  => $name,
-            'user_type'  => 'customer',
+            'user_type'  => $user_type,
             'created_at'  => date("Y-m-d H:i:s"),
             'google_id'  => $googleId,
             'avatar'     => $avatar

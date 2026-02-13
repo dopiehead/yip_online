@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-11 21:25:53
+/* Smarty version 5.7.0, created on 2026-02-13 21:04:02
   from 'file:admin/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698cf3e159e805_66400862',
+  'unifunc' => 'content_698f91c2b511b8_63348719',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1a3ce4e996977513c8f6b24398804eec8268a518' => 
     array (
       0 => 'admin/index.tpl',
-      1 => 1770845070,
+      1 => 1771016637,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698cf3e159e805_66400862 (\Smarty\Template $_smarty_tpl) {
+function content_698f91c2b511b8_63348719 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_957436416698cf3e1568cd3_63863330', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1283480928698f91c2b01cf0_49840559', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layouts/admin.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_957436416698cf3e1568cd3_63863330 extends \Smarty\Runtime\Block
+class Block_1283480928698f91c2b01cf0_49840559 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/admin';
@@ -71,7 +71,7 @@ foreach ($_from ?? [] as $_smarty_tpl->getVariable('product')->value) {
 $foreach0DoElse = false;
 ?>
                 <tr>
-                    <td><?php echo $_smarty_tpl->getValue('product')['name'];?>
+                    <td class='text-capitalize'><?php echo $_smarty_tpl->getValue('product')['name'];?>
 </td>
     
                     <td>

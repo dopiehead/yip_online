@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Auth;
+use App\Services\CloudinaryService;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
@@ -185,9 +186,11 @@ class AdminController extends Controller
     public function dashboardRemoveProduct()
     {
         $this->requireVendor();
+        
         header('Content-Type: application/json');
-
+    
         $id = $_POST['id'] ?? null;
+    
         if (!$id) {
             echo json_encode([
                 "status" => "error",
@@ -195,13 +198,31 @@ class AdminController extends Controller
             ]);
             return;
         }
-
+    
+        $product = Product::findById($id);
+    
+        if (!$product) {
+            echo json_encode([
+                "status" => "error",
+                "message" => "Product not found"
+            ]);
+            return;
+        }
+    
+        // Delete image from Cloudinary if exists
+        if (!empty($product['public_id'])) {
+            CloudinaryService::delete($product['public_id']);
+        }
+    
+        // Delete from database
         $deleted = Product::deleteProduct($id);
+    
         echo json_encode([
             "status" => $deleted ? "success" : "error",
             "message" => $deleted ? "Item deleted successfully" : "Unable to delete product"
         ]);
     }
+    
 
     // =======================
     // CREATE / UPDATE PRODUCTS

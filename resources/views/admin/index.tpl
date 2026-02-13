@@ -30,7 +30,7 @@
     
             {foreach $products as $product}
                 <tr>
-                    <td>{$product.name}</td>
+                    <td class='text-capitalize'>{$product.name}</td>
     
                     <td>
                         ₦{$product.price|number_format:2}
