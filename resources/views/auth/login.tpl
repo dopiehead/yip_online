@@ -50,16 +50,26 @@
                         <span style="display:none;" class="spinner-border text-white"></span>
                     </button>
 
-                    <p class='text-center mt-3 mb-2 text-danger'>Continue with</p>
-
-                    <div class='text-center'>
+                    <div class='text-center mt-3'>
+                   
                         <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
-                            <i class="fa-brands fa-google fs-5"></i>
+                              <img src="https://developers.google.com/identity/images/g-logo.png" 
+                              alt="Google logo" width="20" height="20">
+
                         </a>
+
+                        <span class='text-center mb-2 text-secondary small'>Continue with Google</span>
+                        {* <a class='shadow bg-light py-2 px-3 text-primary mt-2 rounded'>
+                             <span class="fa-brands fa-facebook fs-5"></span>
+                        </a>
+
+                        <a class='shadow bg-light py-2 ms-2 px-3 text-dark mt-2 rounded'>
+                             <span class="fa-brands fa-apple fs-5"></span>
+                        </a> *}
                     </div>
 
                     <div id="signup-link-wrapper">
-                        <span id="signup-text">Don't have an account? </span>
+                        <span id="">Don't have an account? </span>
                         <a href="register" id="signup-link">Sign up</a>
                     </div>
 

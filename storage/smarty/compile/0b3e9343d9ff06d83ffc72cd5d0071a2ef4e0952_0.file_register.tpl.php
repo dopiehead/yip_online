@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-13 01:17:54
+/* Smarty version 5.7.0, created on 2026-02-14 09:11:32
   from 'file:auth/register.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698e7bc255f8e2_59601528',
+  'unifunc' => 'content_69903c443f6c01_97067833',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0b3e9343d9ff06d83ffc72cd5d0071a2ef4e0952' => 
     array (
       0 => 'auth/register.tpl',
-      1 => 1770945453,
+      1 => 1771060288,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698e7bc255f8e2_59601528 (\Smarty\Template $_smarty_tpl) {
+function content_69903c443f6c01_97067833 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/auth';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -144,13 +144,14 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
                     <small class="signup-note text-muted ms-2 d-none">Processing...</small>
                 </div>
 
-                <p class='text-center mt-3 mb-2 text-danger'>Continue with</p>
-
-                    <div class='text-center'>
-                        <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
-                            <i class="fa-brands fa-google fs-5"></i>
-                        </a>
-                    </div>
+                <div class='text-center mt-2'>
+                   
+                    <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
+                    <img src="https://developers.google.com/identity/images/g-logo.png" 
+                    alt="Google logo" width="20" height="20">
+                    </a>
+                    <span class='text-center mt-3 mb-2 text-muted small'>Continue with Google</span>
+                </div>
 
 
                 <div class="login-link">
@@ -171,23 +172,6 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
         </div>
 
     </div>
-
-    <!-- Password toggle script -->
-    <?php echo '<script'; ?>
->
-        function togglePassword(fieldId, button) {
-            const input = document.getElementById(fieldId);
-
-            if (input.type === "password") {
-                input.type = "text";
-                button.textContent = "Hide";
-            } else {
-                input.type = "password";
-                button.textContent = "Show";
-            }
-        }
-    <?php echo '</script'; ?>
->
 
     <?php echo '<script'; ?>
  src="js/register.js"><?php echo '</script'; ?>

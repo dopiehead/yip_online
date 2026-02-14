@@ -114,13 +114,14 @@
                     <small class="signup-note text-muted ms-2 d-none">Processing...</small>
                 </div>
 
-                <p class='text-center mt-3 mb-2 text-danger'>Continue with</p>
-
-                    <div class='text-center'>
-                        <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
-                            <i class="fa-brands fa-google fs-5"></i>
-                        </a>
-                    </div>
+                <div class='text-center mt-2'>
+                   
+                    <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
+                    <img src="https://developers.google.com/identity/images/g-logo.png" 
+                    alt="Google logo" width="20" height="20">
+                    </a>
+                    <span class='text-center mt-3 mb-2 text-muted small'>Continue with Google</span>
+                </div>
 
 
                 <div class="login-link">
@@ -141,21 +142,6 @@
         </div>
 
     </div>
-
-    <!-- Password toggle script -->
-    <script>
-        function togglePassword(fieldId, button) {
-            const input = document.getElementById(fieldId);
-
-            if (input.type === "password") {
-                input.type = "text";
-                button.textContent = "Hide";
-            } else {
-                input.type = "password";
-                button.textContent = "Show";
-            }
-        }
-    </script>
 
     <script src="js/register.js"></script>
 

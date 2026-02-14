@@ -1,3 +1,15 @@
+function togglePassword(fieldId, button) {
+    const input = document.getElementById(fieldId);
+
+    if (input.type === "password") {
+        input.type = "text";
+        button.textContent = "Hide";
+    } else {
+        input.type = "password";
+        button.textContent = "Show";
+    }
+}
+
 $(document).ready(function () {
 
     $('#signupForm').on('submit', function (e) {

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.7.0, created on 2026-02-13 01:14:14
+/* Smarty version 5.7.0, created on 2026-02-14 09:08:25
   from 'file:auth/login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.7.0',
-  'unifunc' => 'content_698e7ae64ec890_29937840',
+  'unifunc' => 'content_69903b89a8f767_69634778',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '950e77e4f73d09de62c11567927d03279b1d29e6' => 
     array (
       0 => 'auth/login.tpl',
-      1 => 1770945242,
+      1 => 1771060079,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_698e7ae64ec890_29937840 (\Smarty\Template $_smarty_tpl) {
+function content_69903b89a8f767_69634778 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/auth';
 ?>
 <!DOCTYPE html>
@@ -77,16 +77,19 @@ $_smarty_current_dir = '/Applications/MAMP/htdocs/yip_online/resources/views/aut
                         <span style="display:none;" class="spinner-border text-white"></span>
                     </button>
 
-                    <p class='text-center mt-3 mb-2 text-danger'>Continue with</p>
-
-                    <div class='text-center'>
+                    <div class='text-center mt-3'>
+                   
                         <a href="google-login" class="btn shadow bg-light" id="google-submit-button">
-                            <i class="fa-brands fa-google fs-5"></i>
+                              <img src="https://developers.google.com/identity/images/g-logo.png" 
+                              alt="Google logo" width="20" height="20">
+
                         </a>
-                    </div>
+
+                        <span class='text-center mb-2 text-secondary small'>Continue with Google</span>
+                                            </div>
 
                     <div id="signup-link-wrapper">
-                        <span id="signup-text">Don't have an account? </span>
+                        <span id="">Don't have an account? </span>
                         <a href="register" id="signup-link">Sign up</a>
                     </div>
 
