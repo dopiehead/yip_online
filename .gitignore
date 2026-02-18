@@ -1,5 +1,5 @@
 # Ignore Composer's vendor directory (contains third-party packages)
-/vendor/
+# /vendor/
 
 # Ignore Node.js dependencies (if you're using any frontend tools)
 # Safe even if not used
@@ -27,7 +27,7 @@
 
 
 # Ignore vendor again (redundant – already above, but no harm)
-/vendor/
+# /vendor/
 
 # Ignore compiled Smarty template files
 /storage/templates_c/*
