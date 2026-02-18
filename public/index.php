@@ -3,6 +3,15 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+register_shutdown_function(function() {
+    $error = error_get_last();
+    if ($error !== null) {
+        http_response_code(500);
+        echo '<h1>Fatal Error</h1>';
+        echo '<p>' . htmlspecialchars($error['message']) . '</p>';
+        echo '<pre>' . htmlspecialchars(print_r($error, true)) . '</pre>';
+    }
+});
 
 // Start session
 session_start();
