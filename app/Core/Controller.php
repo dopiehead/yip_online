@@ -13,10 +13,11 @@ class Controller
     {
         $this->view = new Smarty();
 
+
         // Smarty directories
         $this->view->setTemplateDir(__DIR__ . '/../../resources/views/');
-        $this->view->setCompileDir(__DIR__ . '/../../storage/smarty/compile/');
-        $this->view->setCacheDir(__DIR__ . '/../../storage/smarty/cache/');
+        $this->view->setCompileDir('/tmp/smarty/templates_c');
+        $this->view->setCacheDir('/tmp/smarty/cache');
         $this->view->setConfigDir(__DIR__ . '/../../storage/smarty/config/');
 
         // Dev vs Prod toggle
