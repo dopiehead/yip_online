@@ -7,8 +7,8 @@ class Cache
     public static function remember(string $key, int $seconds, callable $callback)
     {
         // Absolute path to cache directory
-        $cacheDir = dirname(__DIR__, 2) . '/storage/cache';
-
+        // $cacheDir = dirname(__DIR__, 2) . '/storage/cache';
+        $cacheDir = '/tmp/yip_cache';
         // Ensure cache directory exists
         if (!is_dir($cacheDir)) {
             mkdir($cacheDir, 0775, true);
